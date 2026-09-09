@@ -1,10 +1,1232 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Nuclear Physics Research Group – Publications</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title></title>
+<!-- Google Material Icons Ekleniyor -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+
+        .body {
+		}	
+	
+        .accordion {
+            background-color: #939598;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+            font-size: 15px;
+            margin-bottom: 10px; /* Butonlar arasında boşluk */
+        }
+
+        .active, .accordion:hover {
+            background-color: #00377b; /* Renk değişimi */
+        }
+
+        .accordion.disabled {
+            cursor: default; /* Tıklanamaz yap */
+            background-color: #00377b; /* Arka plan rengi */
+        }
+
+        .accordion.disabled:hover {
+            background-color: #00377b; /* Hover durumunda renk değiştirmesin */
+        }
+
+        .accordion:after {
+            content: '\002B'; /* "+" işareti */
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212"; /* "-" işareti */
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        .panel.open {
+            max-height: 1200px; /* Açıkken maksimum yükseklik */
+        }
+
+        .panel ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .panel ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            position: relative; /* Pozisyonlama için */
+        }
+
+        .wos-number {
+            display: inline-block;
+            background-color: #F64E60; /* Arka plan rengi */
+            color: white; /* Yazı rengi */
+            border-radius: 20px; /* Oval görünüm */
+            padding: 5px 10px; /* İçerik boşluğu */
+            margin-top: 5px; /* Üstten boşluk */
+            margin-right: 10px; /* Sağdan boşluk */
+            font-weight: bold; /* Koyu puntolu yazı */
+            font-size: 13px; /* Boyutu küçültme */
+            text-decoration: none; /* Alt çizgiyi kaldır */
+            font-family: "poppins", sans-serif; /* Font ailesini ayarla */	
+
+        }
+
+        .journal-feature {
+            display: inline-block;
+            background-color: #1BC5BD; /* Arka plan rengi */
+            color: white; /* Yazı rengi */
+            border-radius: 20px; /* Oval görünüm */
+            padding: 5px 10px; /* İçerik boşluğu */
+            margin-top: 5px; /* Üstten boşluk */
+            margin-right: 10px; /* Sağdan boşluk */
+            font-weight: bold; /* Koyu puntolu yazı */
+            font-size: 12px; /* Boyutu küçültme */
+            font-family: "poppins", sans-serif; /* Font ailesini ayarla */	
+
+        }
+
+        .article-button {
+            display: inline-block;
+            background-color: #FFAA00; /* Arka plan rengi */
+            color: white; /* Yazı rengi */
+            border-radius: 20px; /* Oval görünüm */
+            padding: 5px 10px; /* İçerik boşluğu */
+            margin-top: 5px; /* Üstten boşluk */
+            margin-right: 10px; /* Sağdan boşluk */
+            font-weight: bold; /* Koyu puntolu yazı */
+            font-size: 12px; /* Boyutu küçültme */
+            font-family: "poppins", sans-serif; /* Font ailesini ayarla */	
+
+        }
+        .proceeding-button {
+            display: inline-block;
+            background-color: #8950fc; /* Arka plan rengi */
+            color: white; /* Yazı rengi */
+            border-radius: 20px; /* Oval görünüm */
+            padding: 5px 10px; /* İçerik boşluğu */
+            margin-top: 5px; /* Üstten boşluk */
+            margin-right: 10px; /* Sağdan boşluk */
+            font-weight: bold; /* Koyu puntolu yazı */
+            font-size: 12px; /* Boyutu küçültme */
+            font-family: "poppins", sans-serif; /* Font ailesini ayarla */	
+
+        }
+         .proceedingpaper-button {
+            display: inline-block;
+            background-color: #78b833; /* Arka plan rengi */
+            color: white; /* Yazı rengi */
+            border-radius: 20px; /* Oval görünüm */
+            padding: 5px 10px; /* İçerik boşluğu */
+            margin-top: 5px; /* Üstten boşluk */
+            margin-right: 10px; /* Sağdan boşluk */
+            font-weight: bold; /* Koyu puntolu yazı */
+            font-size: 12px; /* Boyutu küçültme */
+			font-family: "poppins", sans-serif; /* Font ailesini ayarla */	
+
+        }		
+		 .yazi {
+            font-size: 15px;
+            font-weight: 400;
+            font-family: "poppins", sans-serif; /* Font ailesini ayarla */
+        }
+		.blog-post-title {
+            text-align: center;
+			font-weight: 700;
+            font-family: "poppins", sans-serif; /* Font ailesini ayarla */
+		}
+		
+		
+		</style>
+<style>
+/* Modern görünüm - eski çalışan HTML yapısı aynen korunmuştur */
+.yazi {
+    max-width: 1140px;
+    margin: 0 auto;
+    color: #24323d;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.accordion {
+    background-color: #f7fafc;
+    color: #0a2239;
+    border: 1px solid #dce5eb;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.active, .accordion:hover {
+    background-color: #0d2d48;
+    color: white;
+}
+
+.accordion.disabled {
+    background-color: #0d2d48;
+    color: white;
+}
+
+.accordion.disabled:hover {
+    background-color: #0d2d48;
+    color: white;
+}
+
+.accordion:after {
+    color: #43b8d8;
+    font-size: 18px;
+}
+
+.panel {
+    padding: 0 20px;
+    background-color: white;
+}
+
+.panel ul {
+    margin-top: 4px;
+    margin-bottom: 18px;
+}
+
+.panel ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e8eef2;
+    color: #4a5965;
+}
+
+.article-button {
+    background-color: #1677a8;
+}
+
+.proceeding-button {
+    background-color: #5d7182;
+}
+
+.proceedingpaper-button {
+    background-color: #5d7182;
+}
+
+.journal-feature {
+    background-color: #43a8b8;
+}
+
+.wos-number {
+    background-color: #52697b;
+}
+
+.blog-post-title {
+    color: #0a2239;
+}
+</style>
+<style>
+/* Yayınlar - güvenli eski HTML yapısı üzerinde son düzen */
+.yazi {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 22px 0 42px;
+}
+
+.accordion {
+    position: relative;
+    display: block;
+    background-color: #f7fafc;
+    color: #0a2239;
+    border: 1px solid #dce5eb;
+    border-radius: 14px;
+    padding: 15px 20px;
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.accordion strong {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.year-count {
+    margin-left: 12px;
+    color: #73818c;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.accordion.disabled .year-count,
+.active .year-count,
+.accordion:hover .year-count {
+    color: #dbeaf1;
+}
+
+.panel {
+    padding: 0 20px;
+    background-color: #ffffff;
+}
+
+.panel.open {
+    margin-bottom: 18px;
+}
+
+.panel ul {
+    margin: 0 0 12px;
+    padding: 0;
+}
+
+.pub-subhead {
+    margin: 10px 0 0;
+    padding: 7px 0 4px;
+    color: #1677a8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e5edf2;
+}
+
+.panel ul li {
+    position: relative;
+    padding: 11px 112px 11px 0;
+    border-bottom: 1px solid #e8eef2;
+    color: #4a5965;
+}
+
+.panel ul li i {
+    color: #0a2239;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.article-button,
+.proceeding-button,
+.proceedingpaper-button,
+.wos-number {
+    display: none;
+}
+
+.journal-feature {
+    padding: 2px 7px;
+    margin: 3px 5px 0 0;
+    border-radius: 12px;
+    background-color: #eaf7fa;
+    color: #1677a8;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.pub-link {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px 9px;
+    border: 1px solid #d9e5eb;
+    border-radius: 16px;
+    background-color: #fbfdfe;
+    color: #0a2239;
+    font-size: 9px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.pub-link:hover {
+    background-color: #eef7fa;
+    color: #1677a8;
+}
+
+@media only screen and (max-width: 700px) {
+    .panel ul li {
+        padding-right: 0;
+    }
+    .pub-link {
+        position: static;
+        display: inline-block;
+        transform: none;
+        margin-top: 7px;
+    }
+    .year-count {
+        display: block;
+        margin: 3px 0 0;
+    }
+}
+</style>
 </head>
 <body>
-  <p>Publications page is being prepared.</p>
+<div class="yazi">
+
+
+
+
+
+
+
+
+
+
+<div class="panel open" style="max-height: none;"><ul><p class="pub-subhead">Makaleler</p><li>Tuğçe Ayşegül Çelebi, G. Hoşgör, E. Tabar, <i>"Gamma-ray shielding properties of the P2O5–ZnO–SrO glass system: A Geant4 Monte Carlo simulation study"</i>, <b>Radiation Physics and Chemistry</b>, Vol. 250 · pp. 114309 (Early Access: 2026)<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.radphyschem.2026.114309" target="_blank">DOI / Yayın</a></li></ul></div><button class="accordion disabled"><strong>2027</strong><span class="year-count">1 Makale</span></button><div class="panel open" style="max-height: none;"><ul><p class="pub-subhead">Makaleler</p><li>İbrahim Erol, İbrahim İsmail, Mesut Ramazan Ekici, Sıdıka Çetinkaya, Ömer Hazman, E. Tabar, <i>"Electrospun Polyvinyl Alcohol-Chitosan/Nb2CTx-TiO2 Fiber Nanocomposites with Enhanced Dielectric, Photocatalytic, and Antimicrobial Performance"</i>, <b>Journal of Inorganic and Organometallic Polymers and Materials</b> (Early Access)<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1007/s10904-026-04494-4" target="_blank">DOI / Yayın</a></li><li>Mesut Ramazan Ekici, E. Tabar, M. Durmaz, Ramazan Yılmaz, G. Hoşgör, Tarık Demirgen, Zafer Barlas, <i>"Hot and cold forging of iron–manganese alloys via powder metallurgy: Corrosion resistance and gamma shielding properties"</i>, <b>Radiation Physics and Chemistry</b>, Vol. 248 · pp. 114134<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.radphyschem.2026.114134" target="_blank">DOI / Yayın</a></li><li>Mutlu İçhedef, Caner Taşköprü, İlayda Sapmaz, Fulsen Özen, Gözde Duman, E. Tabar, Hasan Sözbilir, Salvatore Giammanco, <i>"Multi-parameter soil gas geochemistry and fracture-controlled degassing along the İzmir Fault (Western Türkiye)"</i>, <b>Applied Geochemistry</b>, Vol. 206 · pp. 106912<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.apgeochem.2026.106912" target="_blank">DOI / Yayın</a></li><li>Mesut Ramazan Ekici, G. Hoşgör, E. Tabar, Emrah Bulut, Ramazan Yılmaz, A. Özçetin, Ceren Aydın, <i>"Synthesis, characterization, and investigation of radiation shielding properties of vanadium-based V2CTx MXenes"</i>, <b>Nuclear Engineering and Technology</b>, Vol. 58 · No. 8 · pp. 104322<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.net.2026.104322" target="_blank">DOI / Yayın</a></li><li>E. Tabar, Mesut Ramazan Ekici, G. Hoşgör, Ramazan Yılmaz, Emrah Bulut, Osman Korkmaz, <i>"Examination of gamma radiation transmittance properties of Nb 2 AlC and Nb 2 CT x samples fabricated by powder metallurgy"</i>, <b>Journal of Asian Ceramic Societies</b>, Vol. 14 · No. 2 · pp. 158-173<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1080/21870764.2026.2657753" target="_blank">DOI / Yayın</a></li><li>Derya Kırsever, Rodina Gaber Faisel, G. Hoşgör, E. Tabar, <i>"The influence of waste glass fiber powder incorporation on the mechanical and radiation shielding characteristics of mullite-based ceramics"</i>, <b>Journal of Materials Science: Materials in Electronics</b>, Vol. 37 · No. 12 · 869<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1007/s10854-026-17301-0" target="_blank">DOI / Yayın</a></li><li>Abdul Vahap Korkmaz, E. Kemah, <i>"Evaluation of gamma-ray shielding performance of cement composites reinforced with activated magnesium slag"</i>, <b>Journal of the Australian Ceramic Society</b>, Vol. 62 · No. 3 · pp. 1073-1089 (Early Access: 2025)<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1007/s41779-025-01301-0" target="_blank">DOI / Yayın</a></li><li>Nilüfer Demirci Saygı, Ainur Utarshayeva, <i>"Investigation of the low and high-lying M1 transition responses in 158Dy–170Hf, 160Dy–168Yb, 162Dy–166Er pseudo-mirror nuclei"</i>, <b>Physica Scripta</b>, Vol. 101 · 295302<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/ae8a3b" target="_blank">DOI / Yayın</a></li><li>A.V. Korkmaz, M. Sert, E. Kemah, H. Yakut, <i>"Comparative assessment of natural and salt-modified travertines for gamma-ray protection in construction materials"</i>, <b>Construction and Building Materials</b>, Vol. 519 · pp. 145909<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.conbuildmat.2026.145909" target="_blank">DOI / Yayın</a></li><p class="pub-subhead">Bildiriler</p><li>
+                T Gel, G Hoşgör, E Tabar, N Demirci Saygı, E Kemah,
+                <i>"Excitation Energies and E2 Transition Probabilities of the First γ-Vibrational K<sup>π</sup>=2<sup>+</sup> States in <sup>164,166,168</sup>Er"</i>,
+                <b>Turkish Physical Society 42nd International Physics Congress</b>, 31 August–4 September 2026 · Bodrum, Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                TA Çelebi, E Tabar, G Hoşgör, E Kemah,
+                <i>"Ground-State Magnetic Moments of the Odd-Odd <sup>140,142,144</sup>Pr Isotopes"</i>,
+                <b>Turkish Physical Society 42nd International Physics Congress</b>, 31 August–4 September 2026 · Bodrum, Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                G Hoşgör, E Tabar, Z Oktar,
+                <i>"Microscopic Calculation of Effective Charges for Ground-State E2 Transitions in Odd-Mass <sup>171,173</sup>Yb: The Role of Polarization"</i>,
+                <b>Turkish Physical Society 42nd International Physics Congress</b>, 31 August–4 September 2026 · Bodrum, Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                A Kuş, H Yakut, E Kemah,
+                <i>"Python-Based Image Processing and Deep Learning Software for Automatically Counting Alpha-Particle Tracks in LR-115 Solid-State Nuclear Track Detectors"</i>,
+                <b>Turkish Physical Society 42nd International Physics Congress</b>, 31 August–4 September 2026 · Bodrum, Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li>Tuana Gel, Gamze Hoşgör, Emre Tabar, Nilüfer Demirci Saygı, Elif Kemah, <i>"Excitation Energies and E2 Transition Probabilities of the First γ-Vibrational Kπ=2+ States in 164,166,168Er"</i>, <b>Turkish Physical Society 42nd International Physics Congress</b>, 31 August–4 September 2026 · Bodrum, Türkiye<span class="proceeding-button">Proceeding</span></li><li>Tuğçe Ayşegül Çelebi, Emre Tabar, Gamze Hoşgör, Elif Kemah, <i>"Ground-State Magnetic Moments of the Odd-Odd 140,142,144Pr Isotopes"</i>, <b>Turkish Physical Society 42nd International Physics Congress</b>, 31 August–4 September 2026 · Bodrum, Türkiye<span class="proceeding-button">Proceeding</span></li><li>Gamze Hoşgör, Emre Tabar, Zehra Oktar, <i>"Microscopic Calculation of Effective Charges for Ground-State E2 Transitions in Odd-Mass 171,173Yb: The Role of Polarization"</i>, <b>Turkish Physical Society 42nd International Physics Congress</b>, 31 August–4 September 2026 · Bodrum, Türkiye<span class="proceeding-button">Proceeding</span></li></ul></div><button class="accordion disabled"><strong>2026</strong><span class="year-count">9 Makale · 7 Bildiri</span></button><div class="panel open" style="max-height: none;"><ul><p class="pub-subhead">Makaleler</p><li>E. Kemah, H. Yakut, E. Tabar, G. Hoşgör, <i>"Machine learning-driven identification of E1 moments from photonuclear cross-section measurements"</i>, <b>Physica Scripta</b>, Vol. 100 · 096003<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/adfe27" target="_blank">DOI / Yayın</a></li><li>M.S. Al‐Buriahi, Seun Samuel Owoeye, Hind Saeed Alzahrani, Norah Salem Alsaiari, Imed Boukhris, E. Kemah, <i>"Photon attenuation, dose rate and buildup factors of porous glasses containing GeO2"</i>, <b>Journal of Radiation Research and Applied Sciences</b>, Vol. 18 · No. 3 · pp. 101659<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.jrras.2025.101659" target="_blank">DOI / Yayın</a></li><li>Zeynep R. Hoşgör, Mete Ünlütürk, Sevgül Gülmez, Ümit Engin Anıl, Selçuk Bulut Yazan, G. Hoşgör, E. Tabar, <i>"Effect of SnO2 on material and radiation shielding properties in SiO2-B2O3-Na2O-K2O-ZnO glass system"</i>, <b>Ceramics International</b>, Vol. 51 · No. 22 · pp. 37545-37555<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.ceramint.2025.06.006" target="_blank">DOI / Yayın</a></li><li>İlayda Sapmaz, Ceren Altun, Caner Taşköprü, E. Tabar, Salvatore Giammanco, Mutlu İçhedef, <i>"Variation of soil gas 222Rn/220Rn concentration ratios along the Balçova–Narlıdere segment of the Izmir Fault"</i>, <b>Journal of Radioanalytical and Nuclear Chemistry</b>, Vol. 334 · No. 9 · pp. 6803-6810<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1007/s10967-025-10117-y" target="_blank">DOI / Yayın</a></li><li>N. Demirci, <i>"Dipole excitations properties in pseudo-mirror 162Er-166Yb nuclei"</i>, <b>Physica Scripta</b>, Vol. 100 · 045301<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/adbb2f" target="_blank">DOI / Yayın</a></li><li>Mesut Ramazan Ekici, E. Tabar, Ramazan Yılmaz, G. Hoşgör, Emrah Bulut, <i>"Investigation of the Effects of Magnesium, Iron, and Manganese on Gamma Permeability in Zinc-Based Alloys Produced by Powder Metallurgy"</i>, <b>Nuclear Technology</b>, Vol. 211 · No. 11 · pp. 2748-2764<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1080/00295450.2025.2454121" target="_blank">DOI / Yayın</a></li><li>E. Tabar, G. Hoşgör, Mesut Ramazan Ekici, Cankut AYDIN, İ.N. Muttaki, <i>"Investigation of Radiation Shielding Properties of Pure Iron and CopperCarbon-Doped Iron Material with GEANT4"</i>, <b>Journal of nuclear sciences</b>, 9<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.59474/nuclear.2023.64" target="_blank">DOI / Yayın</a></li><li>G. Hoşgör, E. Tabar, <i>"The investigation of the radiation shielding features of boro-tellurite glasses containing bismuth and titanium via FLUKA code"</i>, <b>Physica Scripta</b>, Vol. 100 · 015308 (Early Access: 2024)<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/ad9d99" target="_blank">DOI / Yayın</a></li><li>G. Hoşgör, E. Tabar, E. Kemah, H. Yakut, <i>"Influence of TiO2 content on the radiation shielding properties of the La2O3-B2O3-Gd2O3-Nb2O5-ZrO2-SiO2 glasses"</i>, <b>Radiation Physics and Chemistry</b>, Vol. 226 · pp. 112281 (Early Access: 2024)<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.radphyschem.2024.112281" target="_blank">DOI / Yayın</a></li><p class="pub-subhead">Bildiriler</p><li>
+                ZR Hoşgör, ÜE Anıl, SB Yazan, M Ünlütürk, S Gülmez, G Hoşgör, E Tabar,
+                <i>"Synthesis and Characterization of SiO<sub>2</sub>-B<sub>2</sub>O<sub>3</sub>-Na<sub>2</sub>O-K<sub>2</sub>O-ZnO Glass System: The Effect of SnO<sub>2</sub> on the Structural and Radiation Shielding Properties"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                T Gel, E Tabar, G Hoşgör, MR Ekici,
+                <i>"Investigation of Gamma Radiation Shielding Properties in Fe-FeB-Cu-C Materials"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                A Özçetin, E Tabar, H Yakut, E Kemah, G Hoşgör,
+                <i>"Neuro-Fuzzy Modeling of Giant Dipole Resonance (GDR) Sum Rules in Odd-A <sup>169–189</sup>Re Isotopes"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                K Akkaya, E Tabar, G Hoşgör,
+                <i>"Theoretical Investigation of E1 Strength Under the Neutron Separation Energy (S<sub>n</sub>) of Odd-Mass Deformed <sup>191–193</sup>Ir Nuclei"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                Z Gökmen, G Hoşgör, E Tabar,
+                <i>"The Giant Dipole Resonance (GDR) of the Transition Nucleus <sup>195</sup>Pt"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                T Gel, G Hoşgör, E Tabar,
+                <i>"Investigation of Gamma Shielding Properties of Tellurite-Based Glasses Using Geant4: Role of WO<sub>3</sub> and TiO<sub>2</sub> Additions"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                N Demirci Saygı, H Gökdemir, H Kırdemir,
+                <i>"Evaluation of Gamma-Ray Shielding Performance of WC-Co Cutting Tool Waste Using a Co-60 Source: A Lead-Free and Sustainable Alternative to Conventional Materials"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                N Demirci Saygı, İ Günlü,
+                <i>"Low-Energy Electric Dipole Response in Calcium Isotopes Using TGI-QRPA"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li><li>
+                N Demirci Saygı, A Utarshayeva,
+                <i>"Investigation of Spin-Flip M1 Giant Resonances in Pseudo-Mirror Nuclei: <sup>162</sup>Yb–<sup>166</sup>Hf"</i>,
+                <b>Uluslararası kongre / sempozyum</b>, 2025
+                <span class="proceeding-button">Proceeding</span>
+</li></ul></div><button class="accordion disabled"><strong>2025</strong><span class="year-count">9 Makale · 9 Bildiri</span></button><div class="panel open" style="max-height: none;"><ul><p class="pub-subhead">Makaleler</p><li>E. Tabar, G. Hoşgör, H. Yakut, E. Kemah, Y. Komurcu, <i>"On the low-energy electromagnetic dipole modes in 151,153,155Sm Nuclei"</i>, <b>Chinese Journal of Physics</b>, Vol. 92 · pp. 1158-1173<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.cjph.2024.10.030" target="_blank">DOI / Yayın</a></li><li>G. Hoşgör, E. Tabar, E. Kemah, H. Yakut, Kadir Akkaya, Z Gökmen, <i>"The giant dipole resonance (GDR) in odd-mass 181–195Pt nuclei"</i>, <b>Physica Scripta</b>, Vol. 99 · 115305<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/ad86f5" target="_blank">DOI / Yayın</a></li><li>E. Kemah, H. Yakut, E. Tabar, G. Hoşgör, <i>"Understanding the relationship between electric dipole polarizability and photonuclear (-2) moment in odd-A actinide nuclei"</i>, <b>Physica Scripta</b>, Vol. 99 · 106008<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/ad78c2" target="_blank">DOI / Yayın</a></li><li>E. Kemah, H. Yakut, E. Tabar, G. Hoşgör, A. Özçetin, <i>"Integrated photonuclear cross sections in the giant dipole resonance of odd-mass actinide nuclei"</i>, <b>The European Physical Journal Plus</b>, Vol. 139 · No. 8 · 693<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1140/epjp/s13360-024-05482-8" target="_blank">DOI / Yayın</a></li><li>Mesut Ramazan Ekici, E. Tabar, G. Hoşgör, Emrah Bulut, Ahmet Atasoy, <i>"The effect of zinc, iron and manganese content on gamma shielding properties of magnesium-based alloys produced using the powder metallurgy"</i>, <b>Nuclear Engineering and Technology</b>, Vol. 56 · No. 9 · pp. 3872-3883<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1016/j.net.2024.07.039" target="_blank">DOI / Yayın</a></li><li>G. Hoşgör, E. Tabar, E. Kemah, H. Yakut, <i>"The electric dipole characteristics of well-deformed 171,173Yb"</i>, <b>Journal of Physics G: Nuclear and Particle Physics</b>, Vol. 51 · No. 9 · pp. 095105<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1361-6471/ad63c1" target="_blank">DOI / Yayın</a></li><p class="pub-subhead">Bildiriler</p><li> E Kemah, A Özçetin, H Yakut, E Tabar, 
+			     <i>"Artificial Neural Network Analysis of Bremsstrahlungweighted Sum Rule in Giant Dipole Resonance"</i>, 
+				 <b>Cumhuriyet 11<sup>th</sup> International Conference on Applied Sciences</b>, 138-142
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://www.cumhuriyetkongresi.org/_files/ugd/797a84_68a3726ab6f24ae2b88fb216426f4cb4.pdf#page=174" target="_blank">DOI / Yayın</a>
+</li><li> Z Gökmen, G Hoşgör, E Tabar, 
+			      <i>"The Giant Dipole Resonance (GDR) of the transition nucleus <sup>187</sup>W"</i>, 
+				  <b>Aicheas 3<sup>rd</sup> International Conference on Health, Engineering and Applied Sciences</b>, July 5-7, Muş/Türkiye
+                  <span class="proceeding-button">Proceeding</span>
+</li><li> A Özçetin, G Hoşgör, E Tabar, E Kemah, 
+			      <i>"Electric dipole (E1) excitations in <sup>197</sup>Au above the neutron threshold energy"</i>, 
+			      <b>Aicheas 3<sup>rd</sup> International Conference on Health, Engineering and Applied Sciences</b>, July 5-7, Muş/Türkiye
+                  <span class="proceeding-button">Proceeding</span>
+</li><li> G Hoşgör, E Tabar, A Özçetin, 
+			     <i>"Microscopic analysis of electric dipole strengths in <sup>185,187</sup>Re"</i>, 
+				 <b>International Nuclear Sciences and Technologies Conference (INSTEC-2024)</b>, Sep 5-7, İzmir/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> G Hoşgör, E Tabar, Z Gökmen, 
+			     <i>"A theoretical study on the oblate shape of <sup>191,193</sup>Ir nuclei"</i>,
+				 <b>International Nuclear Sciences and Technologies Conference (INSTEC-2024)</b>, Sep 5-7, İzmir/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Kemah, A Özçetin, H Yakut, E Tabar, 
+			     <i>"Adaptive Neuro-Fuzzy Inference System (ANFIS) Modelling of First and Second Photonuclear Sum Rules in Giant Dipole Resonance"</i>,
+				 <b>International Nuclear Sciences and Technologies Conference (INSTEC-2024)</b>, Sep 5-7, İzmir/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Kemah, H Yakut, A Özçetin, O Korkmaz,
+			     <i>"Artificial Neural Network (ANN) Modelling of Photonuclear Cross Sections in odd-mass Actinide Nuclei"</i>,
+				 <b>Turkish Physical Society 40<sup>th</sup> International Physics Congress (TFD-40)</b>, Sep 2-5, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> O Korkmaz, E Tabar, E Kemah, G Hoşgör,
+			     <i>"Predicting Giant Dipole Resonance in odd-mass Lanthanides Using Artificial Neural Network with Levenberg-Marquardt"</i>,
+				 <b>Turkish Physical Society 40<sup>th</sup> International Physics Congress (TFD-40)</b>, Sep 2-5, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div><button class="accordion disabled"><strong>2024</strong><span class="year-count">6 Makale · 8 Bildiri</span></button><div class="panel open" style="max-height: none;"><ul><p class="pub-subhead">Makaleler</p><li>E. Tabar, H. Yakut, G. Hoşgör, E. Kemah, <i>"Polarization effects on the rotational gyromagnetic ratio and magnetic dipole moments of 175,177,177mYb"</i>, <b>The European Physical Journal A</b>, Vol. 59 · No. 12 · 307<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1140/epja/s10050-023-01223-0" target="_blank">DOI / Yayın</a></li><li>E. Tabar, A.A. Kuliev, H. Yakut, G. Hoşgör, E. Kemah, <i>"Polarization factors and their effects on the rotational gyromagnetic ratio"</i>, <b>Physica Scripta</b>, Vol. 98 · 115305<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/acfe5b" target="_blank">DOI / Yayın</a></li><li>Burcu Öztürk, E. Kemah, H. Yakut, E. Tabar, G. Hoşgör, <i>"Inference and visualization of nuclear magnetic moment studies with neuro-fuzzy systems"</i>, <b>Physica Scripta</b>, Vol. 98 · 105301<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/acf004" target="_blank">DOI / Yayın</a></li><li>E. Kemah, H. Yakut, E. Tabar, G. Hoşgör, A.A. Kuliev, <i>"A theoretical analysis of the electromagnetic dipole response in odd-A thorium isotopes"</i>, <b>The European Physical Journal A</b>, Vol. 59 · No. 6 · 135<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1140/epja/s10050-023-01054-z" target="_blank">DOI / Yayın</a></li><li>N. Demirci, Fatma Şahin, <i>"The effects of a Systematic Approach to Solve Real-Life Inventive Problems in Science Class"</i>, <b>Journal of Turkish Science Education</b>, Vol. 20 · No. 1<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.36681/tused.2023.004" target="_blank">DOI / Yayın</a></li><li>H. Yakut, E. Tabar, E. Kemah, G. Hoşgör, <i>"Microscopic calculation of the electromagnetic dipole strength for 239,243Pu isotopes"</i>, <b>Journal of Physics G: Nuclear and Particle Physics</b>, Vol. 50 · No. 1 · pp. 015104 (Early Access: 2022)<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1361-6471/aca3bf" target="_blank">DOI / Yayın</a></li><li>Mesut Ramazan Ekici, E. Tabar, Ahmet Atasoy, Emrah Bulut, G. Hoşgör, <i>"Effect of hydrochloric acid and hydrofluoric acid treatment on the morphology, structure and gamma permeability of 2D MXene Ti 3 C 2 T x electrodes"</i>, <b>Canadian Metallurgical Quarterly</b>, Vol. 62 · No. 4 · pp. 629-650 (Early Access: 2022)<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1080/00084433.2022.2124108" target="_blank">DOI / Yayın</a></li><p class="pub-subhead">Bildiriler</p><li> H Yakut, E Tabar, İ Eser
+			     <i>"Radon Concentrations of the Surface Waters in the European Side of Istanbul, Türkiye"</i>, 
+				 <b> 10th International Mardin Artuklu Scientific Researches Conference </b>, 156-170, ISBN: : 978-625-367-121-1
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://www.artuklukongresi.org/_files/ugd/614b1f_5c2952bfc3ef47a1bc1a1beb34c9c901.pdf#page=224" target="_blank">DOI / Yayın</a>
+</li><li> B Öztürk, H Yakut, E Kemah 
+			     <i>"Magnetic Moment Inference and Modeling of <sup>53-81</sup>Cu Nuclei with Anfis"</i>, 
+				 <b>Cumhuriyet 11<sup>th</sup> 16<sup>th</sup> International Conference on Nuclear Structure Properties </b>,
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://www.researchgate.net/publication/375887284_Magnetic_Moment_Inference_and_Modeling_of_53-81_Cu_Nuclei_with_Anfis" target="_blank">DOI / Yayın</a>
+</li><li> G Hoşgör, E Tabar, H Yakut, E Kemah, AA Kuliev, 
+			     <i>"Systematic of Nuclear Gyromagnetic Factors (g) in odd-mass <sup>125-153</sup>Ce Isotope Chain"</i>, 
+				 <b>Balkan 9<sup>th</sup> International Conference on Applied Sciences</b>, Oct 6-8, Edirne/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Kemah, H Yakut, E Tabar, G Hoşgör, AA Kuliev,
+			     <i>"Ground-State Magnetic Moments of <sup>237,239</sup>Np Isotopes"</i>, 
+				 <b>Turkish Physical Society 39<sup>th</sup> International Physics Congress</b>, Aug 31-Sep 4, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Kemah, H Yakut, E Tabar, G Hoşgör, AA Kuliev,
+			     <i>"Investigation of the ground-state M1 moments in <sup>229,231</sup>Th isotopes"</i>, 
+				 <b>16<sup>th</sup> International Conference on Nuclear Structure Properties</b>, May 8-10, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> G Hoşgör, E Tabar, 
+			     <i>"Polarization effects on g<sub>R</sub>-factors in odd-mass deformed nuclei"</i>, 
+			     <b>16<sup>th</sup> International Conference on Nuclear Structure Properties</b>, May 8-10, Karabük/Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, G Hoşgör, Y Karademirci Kömürcü, 
+			     <i>"Understanding the low-energy electromagnetic dipole response in <sup>155</sup>Sm nucleus: A theoretical perspective"</i>, 
+				 <b>16<sup>th</sup> International Conference on Nuclear Structure Properties</b>, May 8-10, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div><button class="accordion disabled"><strong>2023</strong><span class="year-count">7 Makale · 7 Bildiri</span></button><div class="panel open" style="max-height: none;"><ul><p class="pub-subhead">Makaleler</p><li>E. Tabar, E. Kemah, H. Yakut, G. Hoşgör, <i>"First Theoretical Identification of the Magnetic Dipole Moment of the 97.43 keV State in 153Eu"</i>, <b>Sakarya University Journal of Science</b>, Vol. 26 · No. 5 · pp. 967-973<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.16984/saufenbilder.1123474" target="_blank">DOI / Yayın</a></li><li>E. Tabar, H. Yakut, G. Hoşgör, E. Kemah, <i>"Pygmy and isovector giant dipole resonance in 175Lu"</i>, <b>The European Physical Journal A</b>, Vol. 58 · No. 6 · 101<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1140/epja/s10050-022-00749-z" target="_blank">DOI / Yayın</a></li><li>E. Tabar, H. Yakut, G. Hoşgör, E. Kemah, <i>"Scissors mode and effects of the low-lying E1 excitations on the dipole distributions in 175Lu"</i>, <b>Physica Scripta</b>, Vol. 97 · 065303<span class="article-button">Article</span><a class="pub-link" href="https://doi.org/10.1088/1402-4896/ac6d18" target="_blank">DOI / Yayın</a></li><p class="pub-subhead">Bildiriler</p><li> E Kemah, H Yakut, E Tabar, G Hoşgör, 
+			     <i>"Low-Energy Electric Dipole Strength in the <sup>241</sup>Pu"</i>, 
+				 <b>Turkish Physical Society 38<sup>th</sup> International Physics Congress</b>, Aug 31-Sep 4, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> G Hoşgör, E Tabar, E Kemah, H Yakut, 
+			    <i>"Low-Lying Electric and Magnetic Dipole Response of the <sup>143</sup>Nd"</i>, 
+				<b>Turkish Physical Society 38<sup>th</sup> International Physics Congress</b>, Aug 31-Sep 4, Bodrum/Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, E Kemah, G Hoşgör, 
+			    <i>"Theoretical Study of the Giant Dipole Resonance in the <sup>233</sup>Th Nucleus"</i>, 
+				<b>XV. International Conference on Nuclear Structure Properties</b>, Jun 28-30, Kırıkkale/Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, G Hoşgör, H Yakut, E Kemah, 
+			     <i>"Calculation of Electric Dipole (E1) Resonance in <sup>167</sup>Er from threshold to 22 MeV"</i>, 
+				 <b>XV. International Conference on Nuclear Structure Properties</b>, Jun 28-30, Kırıkkale/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div><button class="accordion disabled"><strong>2022</strong><span class="year-count">3 Makale · 4 Bildiri</span></button><button class="accordion" onclick="togglePanel(this)"><strong>2021</strong><span class="year-count">4 Makale · 3 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> H Yakut, E Tabar, E Kemah, G Hoşgör, 
+			     <i>"Theoretical description of pygmy and giant dipole resonances in <sup>237</sup>Np"</i>, 
+				 <b>Physica Scripta</b>, 96(12), 125315
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000718596600001" target="_blank">WOS:000718596600001</a>
+<a class="pub-link" href="https://iopscience.iop.org/article/10.1088/1402-4896/ac35c4" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, G Hoşgör, E Kemah, 
+			     <i>"Electromagnetic dipole transitions below 4 MeV in odd-neutron <sup>161,163</sup>Dy"</i>, 
+				 <b>Nuclear Physics A</b>, 1014, 122252
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000680531700013" target="_blank">WOS:000680531700013</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2021.122252" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, AA Kuliev, H Quliyev, G Hoşgör, E Kemah, 
+			     <i>"Study of the high lying electric dipole excitations in Odd-A <sup>153-159</sup>Eu isotopes"</i>, 
+				 <b>Physica Scripta</b>, 97(7), 075303
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000647279100001" target="_blank">WOS:000647279100001</a>
+<a class="pub-link" href="https://iopscience.iop.org/article/10.1088/1402-4896/abfacb" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, E Kemah,  N Demirci Saygı, G Hoşgör, H Quliyev, AA Kuliev, 
+			     <i>"Systematics of electric dipole excitations for odd-mass <sup>233-239</sup>U isotopes"</i>, <b>Nuclear Physics A</b>, 1008, 122138
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000717624700001" target="_blank">WOS:000717624700001</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2021.122138" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> H Yakut,  E Tabar, E Kemah, G Hoşgör, 
+			     <i>"The Comparison of the Low-Lying Dipole States in the N=144 Nuclei"</i>, 
+				 <b>Turkish Physical Society 37<sup>nd</sup> International Physics Congress</b>, Sep 1-5, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, G Hoşgör, H Yakut, E Kemah, 
+			     <i>"Theoretical Study of Giant Dipole Resonance in <sup>159</sup>Tb"</i>, 
+				 <b>Turkish Physical Society 37<sup>nd</sup> International Physics Congress</b>, Sep 1-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, G Hoşgör, E Kemah, 
+			     <i>"Magnetic Properties of the Odd-Mass <sup>155-159</sup>Tb Nuclei"</i>, 
+				 <b>Turkish Physical Society 37<sup>nd</sup> International Physics Congress</b>, Sep 1-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2020</strong><span class="year-count">3 Makale · 3 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> E Tabar, H Yakut, AA Kuliev, G Hoşgör, E Kemah, H Quliyev
+			     <i>"Investigation of the electric dipole (E1) excitations in <sup>181</sup>Ta nucleus"</i>, 
+				 <b> The European Physical Journal A </b>, 59(10), 271
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000581905300001" target="_blank">WOS:000581905300001</a>
+<a class="pub-link" href="https://link.springer.com/article/10.1140/epja/s10050-020-00274-x" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, AA Kuliev, G Hoşgör, E Kemah, H Quliyev
+			     <i>"Translational and Galilean Invariant Quasiparticle Phonon Nuclear Model (TGI-QPNM) for electric dipole (E1) transitions in odd-mass deformed nuclei"</i>, 
+				 <b> Nuclear Physics A </b>, 1001, 121885
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000540265500007" target="_blank">WOS:000540265500007</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2020.121885" target="_blank">DOI / Yayın</a>
+</li><li> N Demirci Saygı, F Ertuğral Yamaç, AA Kuliev, H Quliyev
+			     <i>"Theoretical investigation of giant dipole resonance in <sup>146-152</sup>Nd isotopes with QRPA"</i>, 
+				 <b> International Journal of Modern Physics E </b>, 29(7), 2050040
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000575543300002" target="_blank">WOS:000575543300002</a>
+<a class="pub-link" href="https://doi.org/10.1142/S0218301320500408" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> E Tabar, H Yakut,  E Kemah, G Hoşgör, H Quliyev, 
+			     <i>"Electric Dipole Excitations in <sup>233</sup>U within TGI-QPNM"</i>, 
+				 <b>Turkish Physical Society 36<sup>nd</sup> International Physics Congress</b>, Sep 1-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, AA Kuliev, H Quliyev, G Hoşgör, E Kemah, 
+			     <i>"Microscopic Investigation of Low- and High-Lying Electric Dipole Resonance in odd-mass <sup>153</sup>Eu"</i>, 
+				 <b>Turkish Physical Society 36<sup>nd</sup> International Physics Congress</b>, Sep 1-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Kemah, E Tabar, H Yakut, Ö Sarıbaş, R Akkaya, 
+			     <i>"Magnetic Dipole Moments of K=1/2 states in odd-mass Yb Isotopes"</i>, 
+				 <b>Turkish Physical Society 36<sup>th</sup> International Physics Congress</b>, Sep 1-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2019</strong><span class="year-count">6 Makale · 11 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> E Tabar, 
+			     <i>"A theoretical study on the ground and low-energy magnetic dipole characteristics of <sup>239</sup>Pu nucleus"</i>, 
+			     <b> Nuclear Physics A </b>, 987, 202-221
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000472701200012" target="_blank">WOS:000472701200012</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2019.04.004" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, 
+			     <i>"A theoretical investigation of the magnetic dipole moment of the ground- and excited-states below 600 keV in well-deformed <sup>183,185</sup>W, <sup>185-187</sup>Re and <sup>187-189</sup>Os"</i>, 
+				 <b> International Journal of Modern Physics E </b>, 28(6), 1950040
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000483054600003" target="_blank">WOS:000483054600003</a>
+<a class="pub-link" href="https://doi.org/10.1142/S021830131950040X" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, 
+			     <i>"Magnetic properties of K=1/2 states in deformed odd-mass nuclei"</i>, <b> Nuclear Physics A </b>, 986, 150-166
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000469162400013" target="_blank">WOS:000469162400013</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2019.02.010" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, AA Kuliev, 
+			     <i>"Magnetic dipole response of the <sup>169</sup>Tm nucleus"</i>, 
+				 <b> Nuclear Physics A </b>, 981, 130-146
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000452818600009" target="_blank">WOS:000452818600009</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2018.07.001" target="_blank">DOI / Yayın</a>
+</li><li> H Yakut, E Tabar, G Hoşgör, 
+			     <i>"Effects of the isoscalar and isovector interaction on the ground-state magnetic moments of odd-mass <sup>137-145</sup>Ce nuclei"</i>, 
+				 <b> Canadian Journal of Physics </b>, 97(11), 1187-1190
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000492729400006" target="_blank">WOS:000492729400006</a>
+<a class="pub-link" href="https://cdnsciencepub.com/doi/10.1139/cjp-2018-0697" target="_blank">DOI / Yayın</a>
+</li><li>  H Yakut, E Tabar, H Quliyev 
+			     <i>"Comparission of E1 Response of <sup>154</sup>Sm and <sup>155</sup>Sm in the Pygmy Dipole Resonance (PDR) Region"</i>, 
+				 <b>Bitlis Eren Üniversitesi Fen Bilimleri Dergisi</b>, 8, 56-60
+                 <span class="article-button">Article</span>
+<a class="pub-link" href="https://dergipark.org.tr/en/pub/bitlisfen/issue/51415/635427" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> G Hoşgör, E Tabar, 
+			     <i>"A Theoretical Study of the Low-lying Electric Dipole (E1) Strength in <sup>163</sup>Dy within the QRPA"</i>, 
+				 <b>5<sup>th</sup> International Conference on Theoretical and Experimental Studies in Nuclear Applications and Technology</b>, 172-175
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://www.researchgate.net/publication/336312288_A_theoretical_study_of_the_low-lying_electric_dipole_E1_strength_in_163Dy_within_the_QRPA" target="_blank">DOI / Yayın</a>
+</li><li> H Yakut, E Tabar, E Kemah
+			     <i>"Giant dipole resonance (GDR) in <sup>235</sup>U"</i>, 
+				 <b>5<sup>th</sup> International Conference on Theoretical and Experimental Studies in Nuclear Applications and Technology</b>, 172-175
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://www.researchgate.net/publication/336312398_Giant_dipole_resonance_GDR_in_235U" target="_blank">DOI / Yayın</a>
+</li><li> H Yakut, E Tabar, E Kemah, 
+			     <i>"The Investigation of the Giant Dipole Resonance (GDR) Characteristics for the <sup>141</sup>Pr Nucleus"</i>, 
+				 <b>Book of Full Text Proceedings Turkish Physical Society 35<sup>nd</sup> International Physics Congress (TPS35)</b>, 1(9), 532-538
+                 <span class="article-button">Article</span><span class="proceedingpaper-button">Proceeding Paper</span>
+</li><li> E Tabar, G Hoşgör, 
+			     <i>"Electric Dipole (E1) Strength in <sup>139</sup>La Nuclei Below the Neutron-Separation Energy"</i>, 
+				 <b>Book of Full Text Proceedings Turkish Physical Society 35<sup>nd</sup> International Physics Congress (TPS35)</b>, 1(9), 519-523
+                 <span class="article-button">Article</span><span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://www.researchgate.net/publication/338336799_Electric_Dipole_E1_Strength_in_139La_Nucleus_below_The_Neutron-Separation_Energy" target="_blank">DOI / Yayın</a>
+</li><li> G Hoşgör, E Tabar, 
+			     <i>"A Theoretical Study of the Low-lying Electric Dipole (E1) Strength in <sup>163</sup>Dy within the QRPA"</i>, 
+				 <b>5<sup>th</sup> International Conference on Theoretical and Experimental Studies in Nuclear Applications and Technology</b>, May 2-5, Amasya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> G Hoşgör, N Demirci Saygı, B Bablak, F Ertuğral Yamaç, 
+			     <i>"Electric Dipole Structure of <sup>192</sup>Os in the 0-20 MeV Energy Range"</i>, 
+				 <b>5<sup>th</sup> International Conference on Theoretical and Experimental Studies in Nuclear Applications and Technology</b>, May 2-5, Amasya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, G Hoşgör, 
+			     <i>"Electric Dipole (E1) Strength in <sup>139</sup>La Nuclei Below the Neutron-Separation Energy"</i>, 
+				 <b>Turkish Physical Society 35<sup>th</sup> International Physics Congress</b>, Sep 4-9, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, E Kemah, 
+			     <i>"The Investigation of the Giant Dipole Resonance (GDR) Characteristics for the <sup>141</sup>Pr Nucleus"</i>, 
+				 <b>Turkish Physical Society 35<sup>th</sup> International Physics Congress</b>, Sep 4-9, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, AA Kuliev, H Quliyev,
+			     <i>"Microscopic description of the giant dipole resonance (GDR) mode in <sup>165</sup>Ho"</i>, 
+				 <b>XII. International Conference on Nuclear Structure Properties</b>, Sep 11-13, Bitlis/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, H Quliyev,
+			     <i>"Comparission of E1 Response of <sup>154</sup>Sm and <sup>155</sup>Sm in the Pygmy Dipole Resonance (PDR) Region"</i>, 
+				 <b>XII. International Conference on Nuclear Structure Properties</b>, Sep 11-13, Bitlis/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, YE Yaşar,
+			     <i>"Radon Exhalation Rate and Effective Radium Content of the Soil Samples Collected From Orhaneli District of Bursa, Turkey"</i>, 
+				 <b>Turkish Physical Society 35<sup>th</sup> International Physics Congress</b>, Sep 4-9, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2018</strong><span class="year-count">2 Makale · 6 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> E Tabar, H Yakut, AA Kuliev, 
+			     <i>"Low-energy dipole strength in even-even <sup>152-164</sup>Dy isotopes within the quasiparticle random phase approximation (QRPA) including symmetry restoring interactions"</i>, 
+				 <b> Nuclear Physics A </b>, 979, 143-164
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000449566600006" target="_blank">WOS:000449566600006</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2018.09.040" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, A Kuş, 
+			     <i>"Measurement of the radon exhalation rate and effective radium concentration in soil samples of southern Sakarya, Turkey"</i>, 
+				 b&gt; Indoor and Built Environment , 27(2), 278-288
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000428119800013" target="_blank">WOS:000428119800013</a>
+<a class="pub-link" href="https://doi.org/10.1177/1420326X16672510" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> H Yakut, E Tabar
+			     <i>"Tek-A’lı Deforme Çekirdeklerde Taban-Durum Manyetik Momentine Spin Polarizasyonun Etkisi"</i>, 
+				 <b> 5. International Multidisciplinary Studies Congress </b>, 1(1), 82-97, ISBN: 978-605-258-219-0
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://multicongress.net/Multicongreess_Antalya/Antalya_c1.pdf" target="_blank">DOI / Yayın</a>
+</li><li> H Yakut, E Tabar
+			     <i>"<sup>153</sup>Sm çekirdeğinde taban durum karışımlarının manyetik momente etkisi"</i>, 
+				 <b> 5. International Multidisciplinary Studies Congress </b>, 1(1), 82-97, ISBN: 978-605-258-219-0
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="pub-link" href="https://multicongress.net/Multicongreess_Antalya/Antalya_c1.pdf" target="_blank">DOI / Yayın</a>
+</li><li> H Yakut, E Tabar, G Hoşgör, 
+			     <i>"Effects of Isoscalar and Isovector Interaction on the Ground-State Magnetic Moments of the Odd-Mass <sup>137-145</sup>Ce Nuclei"</i>, 
+				 <b>Turkish Physical Society 34<sup>nd</sup> International Physics Congress</b>, Sep 5-9, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, G Hoşgör, 
+			     <i>"Strength Functions for Collective Excitations in Deformed <sup>164</sup>Dy"</i>, 
+				 <b>Turkish Physical Society 34<sup>nd</sup> International Physics Congress</b>, Sep 5-9, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, E Kemah, 
+			     <i>"First Theoretical Study on Magnetic Dipole Response of the <sup>169</sup>Tm"</i>, 
+				 <b>Turkish Physical Society 34<sup>nd</sup> International Physics Congress</b>, Sep 5-9, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, E Kemah, 
+			     <i>"First Theoretical Identification of The Magnetic Dipole Moment of the Excited State at 97.43 keV in <sup>153</sup>Eu"</i>, 
+				 <b>Turkish Physical Society 34<sup>nd</sup> International Physics Congress</b>, Sep 5-9, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2017</strong><span class="year-count">8 Makale · 10 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> E Tabar, H Yakut, AA Kuliev, H Quliyev, G Hoşgör, 
+			     <i>"Magnetic moments and g-factors in odd-A Ho isotopes"</i>, 
+				 <b> Canadian Journal of Physics </b>, 41(8), 074101
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000406156700006" target="_blank">WOS:000406156700006</a>
+<a class="pub-link" href="https://iopscience.iop.org/article/10.1088/1674-1137/41/7/074101" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, AA Kuliev, 
+			     <i>"Microscopic investigation of the low-lying magnetic dipole transitions in the odd-mass <sup>155-169</sup>Ho isotopes"</i>, 
+				 <b> Nuclear Physics A </b>, 964, 1-17
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000404199900001" target="_blank">WOS:000404199900001</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2017.04.039" target="_blank">DOI / Yayın</a>
+</li><li> B Saygı, DT Joss,..., F Ertuğral, et al. 
+			     <i>"Reduced transition probabilities along the yrast line in <sup>166</sup>W"</i>, 
+				 <b> Physical Review C </b>, 96(2), 021301
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000406755100001" target="_blank">WOS:000406755100001</a>
+<a class="pub-link" href="https://journals.aps.org/prc/abstract/10.1103/PhysRevC.96.021301" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, MM Saç, C. Taşköprü, M İçhedef, A Kuş, 
+			     <i>"Natural radioactivity levels and related risk assessment in soil samples from Sakarya, Turkey"</i>, 
+				 <b> Nuclear Physics A </b>, 313(1), 249-259
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000403690400028" target="_blank">WOS:000403690400028</a>
+<a class="pub-link" href="https://doi.org/10.1007/s10967-017-5266-2" target="_blank">DOI / Yayın</a>
+</li><li> H Yakut, E Tabar, E Yıldırım, Z Zenginerler, F Ertuğral, N Demirci, 
+			     <i>"Soil Gas Radon Measurement Around Fault Lines on the Western Section of the North Anatolian Fault Zone in Turkey"</i>, 
+				 <b> Radiation Protection Dosimetry </b>, 173(4), 405-413
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000399769400018" target="_blank">WOS:000399769400018</a>
+<a class="pub-link" href="https://doi.org/10.1093/rpd/ncw009" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, AA Kuliev, 
+			     <i>"Microscopic description of low-lying M1 excitations in odd-mass actinide nuclei"</i>, 
+				 <b> Nuclear Physics A </b>, 957, 33-50
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000390830600003" target="_blank">WOS:000390830600003</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2016.07.004" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, 
+			     <i>"Investigation of low-lying magnetic dipole excitations in the <sup>153</sup>Eu nucleus"</i>, 
+				 <b> Turkish Journal of Physics </b>, 41(2), 133-142
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000399872800006" target="_blank">WOS:000399872800006</a>
+<a class="pub-link" href="https://journals.tubitak.gov.tr/physics/vol41/iss2/6/" target="_blank">DOI / Yayın</a>
+</li><li>  E Tabar
+			     <i>"Calibration of LR-115 type-II detectors used in radon measurements"</i>, 
+				 <b>Sakarya University Journal of Science</b>, 21(3), 356-362
+                 <span class="article-button">Article</span>
+<a class="pub-link" href="https://doi.org/10.16984/saufenbilder.284236" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> G Hoşgör, H Yakut, E Tabar,  
+			     <i>"Spin Polarization Effects on Magnetic Dipole Moment of <sup>153,155</sup>Eu"</i>, 
+				 <b> AIP Conference Proceedings </b>, 1815, 060011
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000435205100063" target="_blank">WOS:000435205100063</a>
+<a class="pub-link" href="https://doi.org/10.1063/1.4976407" target="_blank">DOI / Yayın</a>
+</li><li> G Hoşgör, H Yakut, E Tabar, AA Kuliev, 
+			     <i>"On the ground-state magnetic dipole properties of the <sup>153</sup>Sm nucleus"</i>, 
+				 <b>X. International Conference on Nuclear Structure Properties</b>, Sep 20-22, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, AA Kuliev, G Hoşgör, 
+			     <i>"Systematics of low-lying magnetic dipole excitations in odd-proton Ho isotope chain"</i>, 
+				 <b>X. International Conference on Nuclear Structure Properties</b>, Sep 20-22, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, AA Kuliev, G Hoşgör, 
+			     <i>"Properties of the scissors mode in the odd-mass <sup>151-161</sup>Gd isotopes"</i>, 
+				 <b>Turkish Physical Society 33<sup>nd</sup> International Physics Congress</b>, Sep 6-10, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, G Hoşgör, H Quliyev, 
+			     <i>"The Ground-State Magnetic Moments of odd-A <sup>173-177</sup>Lu Isotopes"</i>, 
+				 <b>Turkish Physical Society 33<sup>nd</sup> International Physics Congress</b>, Sep 6-10, Bodrum/Türkiye
+                 <span class="article-button">Poster</span><span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, AA Kuliev, G Hoşgör, 
+                 <i>"Investigation of the scissors mode in <sup>161</sup>Dy nucleus"</i>, 
+				 <b>3<sup>rd</sup> International Conference on Theoretical and Experimental Studies in Nuclear Applications and Technology</b>, May 10-12, Adana/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> F Ertuğral, N Demirci, H Yakut, E Tabar, N Uludağ, 
+                 <i>"Determination of awareness about indoor radon concentration effect of Sakarya University students and personnel"</i>, 
+				 <b>Turkish Physical Society 33<sup>rd</sup> International Physical Congress</b>, Sep 6-10, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> Y Sağlam, F Ertuğral, H Yakut, E Tabar, N Demirci, 
+                 <i>"Radon Gas Concentration in Soil in Doğançay Village of Sakarya City"</i>, 
+				 <b>Turkish Physical Society 33<sup>rd</sup> International Physical Congress</b>, Sep 6-10, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, 
+                 <i>"On the properties of scissors mode in N=91 isotones"</i>, 
+				 <b>X. International Conference on Nuclear Structure Properties</b>, Sep 20-22, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, R Akkaya, S Kesapoğlu, 
+                 <i>"Radon Exhalation Rates of the Soil Samples from Different Districts of Bursa, Turkey"</i>, 
+				 <b>X. International Conference on Nuclear Structure Properties</b>, Sep 20-22, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2016</strong><span class="year-count">1 Makale · 7 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> E Tabar, H Yakut, AA Kuliev,
+			     <i>"Microscopic description of ground state magnetic moment and low-lying magnetic dipole excitations in heavy odd-mass <sup>181</sup>Ta nucleus"</i>, 
+				 <b> International Journal of Modern Physics E </b>, 25(8), 1650053
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000382832700009" target="_blank">WOS:000382832700009</a>
+<a class="pub-link" href="https://doi.org/10.1142/S0218301316500531" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> Z Zenginerler, F Ertuğral, H Yakut,  E Tabar, N Demirci, K Günermelikoğlu,
+			     <i>"Measurement of Seasonal Indoor Radon Concentration in Sakarya University, Turkey"</i>, 
+				 <b> Acta Physica Polonic A </b>, 130(1), 450-452
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000384810700121" target="_blank">WOS:000384810700121</a>
+<a class="pub-link" href="http://przyrbwn.icm.edu.pl/APP/PDF/130/a130z1p120.pdf" target="_blank">DOI / Yayın</a>
+</li><li> Z Zenginerler, F Ertuğral, N Demirci, E Tabar, AA Kuliev, E Guliyev, Y Atmaca,
+			     <i>"The Ground State Nilsson Quantum Numbers of the Odd-Odd <sup>138,140</sup>Pr Nuclei"</i>, 
+				 <b> Acta Physica Polonic A </b>, 130(1), 459-462
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000384810700123" target="_blank">WOS:000384810700123</a>
+<a class="pub-link" href="http://przyrbwn.icm.edu.pl/APP/PDF/130/a130z1p122.pdf" target="_blank">DOI / Yayın</a>
+</li><li> A Kuş, H Yakut, E Tabar,
+			     <i>"Radon Exhalation Rates and Effective Radium Contents of the Soil Samples in Adapazarı, Turkey"</i>, 
+				 <b> AIP Conference Proceedings </b>, 1722, 030009
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000375923300013" target="_blank">WOS:000375923300013</a>
+<a class="pub-link" href="https://doi.org/10.1063/1.4944132" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, G Hoşgör, 
+			     <i>"Low-lying M1 excitations in heavy deformed <sup>153</sup>Eu"</i>, 
+				 <b>Turkish Physical Society 32<sup>nd</sup> International Physics Congress</b>, Sep 6-9, Bodrum/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> G Hoşgör, H Yakut, E Tabar, 
+			    <i>"Spin polarization effects on magnetic dipole moment of <sup>153,155</sup>Eu"</i>, 
+				<b>Turkish Physical Society 32<sup>nd</sup> International Physics Congress</b>, Sep 6-9, Bodrum/Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, H Quliyev, AA Kuliev, 
+			    <i>"Explanation of M1 Excitations Via Spin Spin Interaction in Odd Mass <sup>229-233</sup>Th Isotopes"</i>, 
+				<b>1<sup>st</sup> International Underground Resources and Energy Conference</b>, Oct 6-8, Yozgat/Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, H Quliyev, AA Kuliev, 
+			    <i>"Study of Magnetic Dipole Excitations in Odd mass <sup>233-239</sup>U Isotopes"</i>, 
+				<b>IX. International Workshop on Nuclear Structure Properties</b>, Sep 1-3, Sivas/Türkiye
+                <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2015</strong><span class="year-count">9 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Bildiriler</p><li> F Ertuğral, H Yakut, E Tabar, R Akkaya, N Demirci, Z Zenginerler,
+			     <i>"Measurements of Radon Content in the Thermal Waters in Sakarya"</i>, 
+				 <b> Acta Physica Polanica A </b>, 128(2B), 251-253
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000363011700073" target="_blank">WOS:000363011700073</a>
+<a class="pub-link" href="http://przyrbwn.icm.edu.pl/APP/PDF/128/a128z2bp073.pdf" target="_blank">DOI / Yayın</a>
+</li><li> F Ertuğral, E Gulliyev, AA Kuliev,
+			     <i>"Quadrupole Moments and Deformation Parameters of the <sup>166-180</sup>Hf, <sup>180-186</sup>W and <sup>152-168</sup>Sm Isotopes"</i>, 
+				 <b> Acta Physica Polanica A </b>, 128(2B), 254-257
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000363011700074" target="_blank">WOS:000363011700074</a>
+<a class="pub-link" href="http://przyrbwn.icm.edu.pl/APP/PDF/128/a128z2bp074.pdf" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, AA Kuliev, 
+			     <i>"Theoretical Investigations of The Ground State Magnetic Properties of <sup>161</sup>Gd Isotope within QPNM"</i>, 
+				 <b>8. International Workshop on Nuclear Structure Properties</b>, Sep 7-10, Sakarya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, AA Kuliev, 
+			     <i>"Spin Polarization and Magnetic Moment of <sup>181</sup>Ta"</i>, 
+				 <b>8. International Workshop on Nuclear Structure Properties</b>, Sep 7-10, Sakarya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> A Kuş, H Yakut, E Tabar, 
+			     <i>"Radon exhalation rates and effective radium contents of the soil samples in Adapazarı, Turkey"</i>, 
+				 <b>9<sup>th</sup> International Physical Conference of the Balkan Physical Union </b>, Aug 24-27, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, AA Kuliev, 
+			     <i>"On the magnetic dipole properties of <sup>175</sup>Lu"</i>, 
+				 <b>8. International Workshop on Nuclear Structure Properties</b>, Sep 7-10, Sakarya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> Y Sağlam, F Ertuğral, H Yakut, E Tabar, N Demirci, R Akkaya,  
+			     <i>"Measurements of Radon Concentration in Indoor, Soil and Drinking Water in Geyve, Sakarya"</i>, 
+				 <b>9<sup>th</sup> International Physics Conference of the Balkan Physical Union</b>, Aug 24-27, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> Z Zenginerler, F Ertuğral, H Yakut, E Tabar, N Demirci, K Günermelikoğlu,  
+			     <i>"Determination of the indoor radon concentration in the Sakarya University Campus"</i>, 
+				 <b>International Conference on Computational and Experimental Science and Engineering</b>, Oct 14-19, Antalya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> S Kasapoğlu, H Yakut, E Tabar, 
+			     <i>"Study of Radon Exhalation Rate in the Soil Samples From Some Districts of Bursa, Turkey Using Solid-State Nuclear Track Dedectors"</i>, 
+				 <b>9<sup>th</sup> International Physical Conference of the Balkan Physical Union</b>, Aug 24-27, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2014</strong><span class="year-count">3 Makale · 12 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> H Yakut, E Tabar, AA Kuliev, E Guliyev,
+			     <i>"The ground-state magnetic moments of odd-mass Hf isotopes"</i>, 
+		         <b> Central European Journal of Physics </b>, 12(12), 843-850
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000342084300005" target="_blank">WOS:000342084300005</a>
+<a class="pub-link" href="https://doi.org/10.2478/s11534-014-0519-y" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, 
+			     <i>"Determination of <sup>226</sup>Ra concentration in bottled mineral water and assessment of effective doses, a survey in Turkey"</i>, 
+				 <b> International Journal of Radiation Research </b>, 12(3), 193-201
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000343927000001" target="_blank">WOS:000343927000001</a>
+<a class="pub-link" href="https://ijrr.com/article-1-1275-en.html" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, H Yakut, 
+			     <i>"Radon measurements in water samples from the thermal springs of Yalova basin, Turkey"</i>,
+				 <b> Journal of Radioanalytical and Nuclear Chemistry </b>, 229(1), 311-319
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000329299200042" target="_blank">WOS:000329299200042</a>
+<a class="pub-link" href="https://link.springer.com/article/10.1007/s10967-013-2845-8" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> F Ertuğral, N Demirci, K Günermelikoğlu, H Yakut, Z Zenginerler, E Tabar
+			     <i>" Sakarya Üniversitesi Fen-Edebiyat Fakültesinde Bina İçi Radon Konsatrasyonu Ölçümü"</i>, 
+				 <b>Turkish Physical Society 31<sup>st</sup> International Physical Congress</b>, Jul 21-24, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li>  H Yakut, E Tabar, AA Kuliev, E Guliyev, 
+			     <i>" Theoretical Description of the Magnetic Dipole Strengths in the Odd-Mass Deformed Nuclei"</i>, 
+				 <b>VII. International Workshop on Nuclear Structure Properties</b>, Oct 27-29, Sinop/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> F Ertuğral, H Yakut, E Tabar, R Akkaya, N Demirci, Z Zenginerler,
+			     <i>"Measurements of Radon content in the thermal waters in Sakarya"</i>, 
+				 <b>International Conference on Computational and Experimental Science and Engineering</b>, Oct 25-29, Antalya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Quliyev, E Tabar, H Yakut, F Ertuğral, AA Kuliev, E Guliyev, 
+			     <i>"Investigation of the Magnetic Dipole Properties in the <sup>186,187</sup>W Isotopes"</i>, 
+				 <b>Turkish Physical Society 31<sup>st</sup> International Physical Congress</b>, Oct 25-29, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> Y Sağlam, F Ertuğral, H Yakut, N Demirci, E Tabar,  
+			     <i>"Adapazarı İli Geyve İlçesi Topraktaki Radon Gazı Konsantrasyonu Ölçümü"</i>, 
+				 <b>Turkish Physical Society 31<sup>st</sup> International Physical Congress</b>, Oct 25-29, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> Z Zenginerler, E Tabar, H Yakut, AA Kuliev, E Guliyev, 
+			     <i>"Magnetic dipole excitations of the <sup>163</sup>Dy nucleus"</i>, 
+				 <b>American Physical Society (APS) April Meeting 2014</b>, Oct 25-29, Ohio/ABD
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, AA Kuliev, F Ertuğral, R Akkaya, 
+			     <i>"Magnetic Dipole Excitations in the Actinide Nuclei"</i>, 
+				 <b>VII. International Workshop on Nuclear Structure Properties</b>, Oct 25-29, Sinop/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, AA Kuliev, H Quliyev, 
+			     <i>"Magnetic dipole properties of the <sup>235,236</sup>U isotopes"</i>, 
+				 <b>International Spring Seminar on Nuclear Physics, Shell Model and Nuclear Structure: Achievements of the Past Two Decades</b>, May 12-16, Ischia
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> F Ertuğral, ER Çıkınlar, N Demirci, H Yakut, E Tabar, 
+			     <i>"Adapazarı Serdivan İlçesinde Bina İçi Radon Konsantrasyonu Ölçümü"</i>, 
+				 <b>Turkish Physical Society 31<sup>st</sup> International Physical Congress</b>, Jul 21-24, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Quliyev, E Tabar, H Yakut, M Güner, AA Kuliev, E Guliyev, 
+			     <i>"<sup>190,191,192</sup>Os İzotoplarının Manyetik Dipol Özelliklerinin Araştırılması"</i>, 
+				 <b>VII. International Workshop on Nuclear Structure Properties</b>, Oct 27-29, Sinop/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, AA Kuliev, E Guliyev, 
+			     <i>"Investigation of the Magnetic Dipole Strength in Odd-mass Deformed Nuclei:<sup>163</sup>Dy and <sup>167</sup>Er"</i>, 
+				 <b>VII. International Workshop on Nuclear Structure Properties</b>, Oct 27-29, Sinop/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> F Ertuğral, H Yakut, E Tabar, R Akkaya, N Demirci,  Z Zenginerler, K Günermelikoğlu, 
+			     <i>"Measurement of seasonal indoor radon concentration in Sakarya University, Turkey"</i>, 
+				 <b>International Conference on Computational and Experimental Science and Engineering (ICCESEN)</b>, Oct 25-29, Antalya/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2013</strong><span class="year-count">6 Makale · 9 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> H Yakut, E Tabar, Z Zenginerler,N Demirci, F Ertuğral,  
+			     <i>"Measurement of <sup>222</sup>Rn concentration in drinking water in Sakarya, Turkey"</i>, 
+				 <b> Radiation Protection Dosimetry </b>, 157(3), 397–406
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000327548300012" target="_blank">WOS:000327548300012</a>
+<a class="pub-link" href="https://doi.org/10.1093/rpd/nct157" target="_blank">DOI / Yayın</a>
+</li><li> H Yakut, E Tabar, AA Kuliev, Z Zenginerler,P Kaplan,
+			     <i>"Ground State Magnetic Propertıes of Odd Neutron Dy Isotopes"</i>, 
+				 <b> International Journal of Modern Physics E </b>, 22(10), 1350076
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000326348100009" target="_blank">WOS:000326348100009</a>
+<a class="pub-link" href="https://doi.org/10.1142/S0218301313500766" target="_blank">DOI / Yayın</a>
+</li><li> E Guliyev, AA Kuliev, F Ertuğral,
+			     <i>"Systematic investigation of the low-energy dipole excitations in <sup>176,178,180</sup>Hf within rotational, translational and Galilean invariant quasiparticle RPA"</i>, 
+				 <b> Nuclear Physics A </b>, 915, 78-89
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000324959600005" target="_blank">WOS:000324959600005</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2013.07.001" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, MN Kumru, M İçhedef, MM Saç,
+			     <i>"Radioactivity level and the measurement of soil gas radon concentration in Dikili geothermal area, Turkey"</i>, 
+				 <b> International Journal of Radiation Research </b>, 11(4), 253-261
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000329997400007" target="_blank">WOS:000329997400007</a>
+<a class="pub-link" href="https://ijrr.com/article-1-1105-en.html" target="_blank">DOI / Yayın</a>
+</li><li> E Tabar, MN Kumru, MM Saç, M İçhedef, M Bolca, F Özenç,
+			     <i>"Radiological and chemical monitoring of Dikili geothermal waters, Western Turkey"</i>, 
+				 <b> Radiation Physics and Chemistry </b>, 91, 89-97
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000322934100013" target="_blank">WOS:000322934100013</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.radphyschem.2013.04.037" target="_blank">DOI / Yayın</a>
+</li><li> Z Zenginerler, E Guliyev, AA Kuliev, H Yakut, G Soluk,  
+			     <i>"Systematic investigation of the low-lying dipole excitations in even-even <sup>124-136</sup>Ba isotopes"</i>, 
+				 <b>  The European Physical Journal A  </b>, 49(9), 107
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000325255800001" target="_blank">WOS:000325255800001</a>
+<a class="pub-link" href="https://link.springer.com/article/10.1140/epja/i2013-13107-7" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> E Tabar, H Yakut, M Sankur 
+			     <i>"Yalovadaki Termal Sularda Radon Konsantrasyonunun Belirlenmesi"</i>, 
+				 <b>Turkish Physical Society 30<sup>th</sup> International Physical Congress</b>, Sep 2-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut
+			     <i>"Sakarya İli İçme Suyu Kaynaklarında <sup>222</sup>Rn Konsantrasyonunun Belirlenmesi"</i>, 
+				 <b>Turkish Physical Society 30<sup>th</sup> International Physical Congress</b>, Sep 2-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, S Öztürk
+			     <i>"LR-115 (Type II) Katıhal Nükleer İz Kazıma Detektörlerinin Kalibrasyonu"</i>, 
+				 <b>Turkish Physical Society 30<sup>th</sup> International Physical Congress</b>, Sep 2-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> Y Sağlam, F Ertuğral, H Yakut, N Demirci, Z Zenginerler, E Tabar, R Akkaya
+			     <i>"Adapazarı ili Örencik ve Doğançay Bölgelerinde Kapalı Ortamlardaki Radon Gazı Konsantrasyonu Ölçümü"</i>, 
+				 <b>VI. International Workshop on Nuclear Structure Properties</b>, Sep 18-20, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, H Yakut, AA Kuliev, E Guliyev, 
+			     <i>"On the magnetic dipole properties of odd-A deformed nuclei"</i>, 
+				 <b>VI. International Workshop on Nuclear Structure Properties</b>, Sep 18-20, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar,
+			     <i>"Kuzey Anadolu Fay Hattı Üzerinde Radon Ölçümleri"</i>, 
+				 <b>Turkish Physical Society 30<sup>th</sup> International Physical Congress</b>, Sep 2-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> Y Sağlam, F Ertuğral, H Yakut, N Demirci, Z Zenginerler, E Tabar, R Akkaya
+			     <i>"Adapazarı İli Geyve İlçesi Kapalı Ortamlardaki Radon Gazı Konsantrasyonu Ölçümü"</i>, 
+				 <b>Turkish Physical Society 30<sup>th</sup> International Physical Congress</b>, Sep 2-5, İstanbul/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, AA Kuliev, E Guliyev, R Akkaya
+			     <i>"Aktinit bölgesi çekirdeklerinin taban-durum manyetik momentlerinin incelenmesi"</i>, 
+				 <b>VI. International Workshop on Nuclear Structure Properties</b>, Sep 18-20, Karabük/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, E Guliyev, 
+			     <i>"Investigation of Magnetic Properties in the Odd-Mass Deformed Nuclei"</i>, 
+				 <b>2<sup>nd</sup> International Eurasian Conference on Mathematical Sciences and Applications</b>, Aug 26-29, Saraybosna/Bosna-Hersek
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2012</strong><span class="year-count">3 Makale · 3 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> H Yakut, E Guliyev, M Güner, E Tabar, Z Zenginerler,
+			     <i>"QPNM calculation for the ground state magnetic moments of odd-mass deformed nuclei: <sup>157-167</sup>Er isotopes"</i>, 
+				 <b> Nuclear Physics A </b>, 888, 23–33
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000307039100003" target="_blank">WOS:000307039100003</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.nuclphysa.2012.05.010" target="_blank">DOI / Yayın</a>
+</li><li> A Thorntwaite, D O'Donnell,..., F Ertuğral, et al., 
+			     <i>"Characterizing the atomic mass surface beyond the proton drip line via α-decay measurements of the π<sub>s1/2</sub> ground state of <sup>165</sup>Re and the π<sub>h11/2</sub> isomer in <sup>161</sup>Ta"</i>, 
+				 <b> Physical Review C </b>, 86(6), 064315
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000312446200002" target="_blank">WOS:000312446200002</a>
+<a class="pub-link" href="https://journals.aps.org/prc/abstract/10.1103/PhysRevC.86.064315" target="_blank">DOI / Yayın</a>
+</li><li> D O'Donnell, RD Page,..., F Ertuğral, et al., 
+			     <i>"First observation of excited states of <sup>173</sup>Hg"</i>, 
+				 <b> Physical Review C </b>, 85(5), 054315
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000304254400003" target="_blank">WOS:000304254400003</a>
+<a class="pub-link" href="https://journals.aps.org/prc/abstract/10.1103/PhysRevC.85.054315" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> H Yakut, E Tabar, E Guliyev,
+			     <i>"Tek A’lı Deforme Çekirdeklerde Makas Mod Uyarılmaları için QPNM Bazında Analitik İfadelerin Elde Edilmesi"</i>, 
+				 <b>Turkish Physical Society 29<sup>th</sup> International Physics Congress</b>, Sep 5-8, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, O Örnek,
+			     <i>"Tek N-Çift Z Deforme Çekirdeklerinde Taban-Durum Manyetik Özelliklerinin Teorik Olarak İncelenmesi"</i>, 
+				 <b>Turkish Physical Society 29<sup>th</sup> International Physics Congress</b>, Sep 5-8, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> H Yakut, E Tabar, E Guliyev, O Örnek,
+			     <i>"Theoretical Calculation of the Ground-State Magnetic Moments in the Odd-Mass Nuclei"</i>, 
+				 <b>1<sup>st</sup> International Eurasian Conference on Mathematical Sciences and Applications</b>, Sep 3-7, Priştine/Kosova
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2011</strong><span class="year-count">4 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Bildiriler</p><li> H Yakut, AA Kuliev, E Tabar, P Kaplan, N Demirci
+			     <i>"<sup>155-165</sup>Dy İzotoplarının Taban-Hal Manyetik Momentlerinin İncelenmesi"</i>, 
+				 <b>5. Nükleer Yapı Özellikleri Çalıştayı</b>, Oct 12-14, Muş/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, AA Kuliev, H Yakut, E Guliyev, 
+			     <i>"<sup>155</sup>Gd ve <sup>157</sup>Gd Çekirdeklerinde Spin Polarizasyonun Manyetik Moment Üzerindeki Etkisi"</i>, 
+				 <b>5. Nükleer Yapı Özellikleri Çalıştayı</b>, Oct 12-14, Muş/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, AA Kuliev, H Yakut, E Guliyev, 
+			     <i>"<sup>157-167</sup>Er iztoplarının Taban Durum Manyetik Momentlerinin Hesaplanması"</i>, 
+				 <b>Turkish Physical Society 28<sup>th</sup> International Physics Congress </b>, Sep 6-9, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, AA Kuliev, H Yakut, E Guliyev, 
+			     <i>"A Microscopic Description of the Spin Polarization Effects on the Magnetic Moments"</i>, 
+				 <b>The 4<sup>th</sup> Congress of the Turkic World Mathematical Society</b>, Jul 1-3, Bakü/Azerbaycan
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2010</strong><span class="year-count">1 Makale · 1 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> AA Kuliev, E Guliyev, F Ertuğral, S Özkan, 
+			     <i>"The low-energy dipole structure of <sup>232</sup>Th, <sup>236</sup>U and <sup>238</sup>U actinide nuclei"</i>, 
+				 <b>  The European Physical Journal A  </b>, 43(3), 313-321
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000275161800007" target="_blank">WOS:000275161800007</a>
+<a class="pub-link" href="https://link.springer.com/article/10.1140/epja/i2010-10933-y" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> F Şahin, A Sarı, S Demir, N Demirci, S Usta, 
+			     <i>"Intersection of different disciplines: Elements"</i>, 
+				 <b> Procedia - Social and Behavioral Sciences </b>, 2(2), 2992-2996
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000282002802168" target="_blank">WOS:000282002802168</a>
+<a class="pub-link" href="https://doi.org/10.1016/j.sbspro.2010.03.453" target="_blank">DOI / Yayın</a>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2009</strong><span class="year-count">3 Makale · 7 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Makaleler</p><li> H Yakut, AA Kuliev, E Guliyev,  Z Yıldırım, 
+			     <i>"Intrinsic g<sub>K</sub> factors of odd-mass <sup>167-179</sup>Lu isotopes"</i>, 
+				 <b> Pramana </b>, 73, 829–837
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000272141100004" target="_blank">WOS:000272141100004</a>
+<a class="pub-link" href="https://link.springer.com/article/10.1007/s12043-009-0151-3" target="_blank">DOI / Yayın</a>
+</li><li> F Ertuğral, E Guliyev, AA Kuliev, Z Yıldırım, 
+			     <i>"Fine structure of the dipole excitations of the even-even <sup>160</sup>Gd nucleus in the spectroscopic region"</i>, 
+				 <b> Central European Journal of Physics </b>, 7(4), 731-737
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000268295800011" target="_blank">WOS:000268295800011</a>
+<a class="pub-link" href="https://doi.org/10.2478/s11534-008-0155-5" target="_blank">DOI / Yayın</a>
+</li><li> E Guliyev, AA Kuliev, F Ertuğral, 
+			     <i>"Low-lying magnetic and electric dipole strength distribution in the <sup>176</sup>Hf nucleus"</i>, 
+				 <b>  The European Physical Journal A  </b>, 39(3), 323-333
+                 <span class="article-button">Article</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000264537600008" target="_blank">WOS:000264537600008</a>
+<a class="pub-link" href="https://link.springer.com/article/10.1140/epja/i2008-10722-3" target="_blank">DOI / Yayın</a>
+</li><p class="pub-subhead">Bildiriler</p><li> E Guliyev, AA Kuliev, F Ertuğral, 
+			     <i>"Low-Lying Dipole Excitations in the Deformed Even-Even Isotopes <sup>154-160</sup>Gd"</i>, 
+				 <b> Acta Physica Polonica B </b>, 40(3), 653-656
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000264436200038" target="_blank">WOS:000264436200038</a>
+<a class="pub-link" href="https://www.actaphys.uj.edu.pl/fulltext?series=Reg&amp;vol=40&amp;page=653" target="_blank">DOI / Yayın</a>
+</li><li> D Göker, M Saç, M Tarakçı, M İçhedef, E Tabar, M Revan, S Aydemir, A Arıkpınar, 
+			     <i>"İzmir Seferihisar Doğanbey Fay Hattında Radon Anomalilerinin Olası Deprem Önizleyicisi Olarak Kullanılması"</i>, 
+				 <b>X. Ulusal Nükleer Bilimler ve Teknolojileri Kongresi</b>, Oct 7-10, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> M Revan, M Tarakçı, E Tabar, M Saç, M İçhedef, S Aydemir, D Göker, A Arıkpınar, B Camgöz, M Bolca, F Özen
+			     <i>"Kuzey Ege Termal Sularının Radyoaktivite Düzeylerinin Belirlenmesi"</i>, 
+				 <b>X. Ulusal Nükleer Bilimler ve Teknolojileri Kongresi</b>, Oct 7-10, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> A Arıkpınar, M Saç, M İçhedef, D Göker, E Tabar, M Revan, S Aydemir,
+			     <i>"Seferihisar Bölgesi Jeotermal Alanlardaki Binalarda Radon Düzeylerinin Belirlenmesi"</i>, 
+				 <b>X. Ulusal Nükleer Bilimler ve Teknolojileri Kongresi</b>, Oct 7-10, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> S Aydemir, D Göker, E Tabar, M Revan, M İçhedef, F Özen, MN Kumru, M Saç, M Bolca, A Arıkpınar, 
+			     <i>"Jeotermal Suların Radyoaktivite ve Kimyasal Etkilerinin İncelenmesi"</i>, 
+				 <b>X. Ulusal Nükleer Bilimler ve Teknolojileri Kongresi</b>, Oct 6-9, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, MN Kumru, M Saç, M İçhedef, M Revan, D Göker, S Aydemir, M Bolca, F Özen, A Arıkpınar, 
+			     <i>"Dikili ve Bergama Bölgelerindeki Radon Ölçümleri ile Tektonik Aktivitenin Değerlendirilmesi"</i>, 
+				 <b>X. Ulusal Nükleer Bilimler ve Teknolojileri Kongresi</b>, Oct 6-9, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li><li> E Tabar, D Göker, M Tarakçı, M Saç, M İçhedef, B Camgöz, MN Kumru,
+			     <i>"Tektonik Aktivitenin Toprak Gazı Radon Değişimleri Üzerine Etkilerinin İncelenmesi"</i>, 
+				 <b>II.Lüminesans Dozimetri Kongresi</b>, Sep 6-9, Muğla/Türkiye
+                 <span class="proceeding-button">Proceeding</span>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2008</strong><span class="year-count">2 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Bildiriler</p><li> H Yakut, AA Kuliev, E Guliyev, 
+			     <i>"Investigations of the gK-factors in the <sup>175,177,179</sup>Hf Isotopes"</i>, 
+				 <b> AIP Conference Proceedings </b>, 1072, 258-261
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000261875700046" target="_blank">WOS:000261875700046</a>
+<a class="pub-link" href="https://doi.org/10.1063/1.3039842" target="_blank">DOI / Yayın</a>
+</li><li> F Ertuğral, E Guliyev, AA Kuliev,
+			     <i>"Electro-Magnetic Dipole Properties of The Even-Even <sup>160</sup>Gd Nucleus in The Spectroscopic Region"</i>, 
+				 <b> AIP Conference Proceedings </b>, 1072, 318-321
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000261875700061" target="_blank">WOS:000261875700061</a>
+<a class="pub-link" href="https://doi.org/10.1063/1.3039858" target="_blank">DOI / Yayın</a>
+</li></ul></div>
+<button class="accordion" onclick="togglePanel(this)"><strong>2007</strong><span class="year-count">3 Bildiri</span></button>
+<div class="panel"><ul><p class="pub-subhead">Bildiriler</p><li> H Yakut, AA Kuliev, E Guliyev, M Bektaşoğlu 
+			     <i>"Investigation Of The Magnetic Dipole Moments Of The I<sup>π</sup>K=1<sup>+</sup>1 States In The Even-Even Deformed Nuclei"</i>, 
+				 <b> AIP Conference Proceedings </b>, 899, 544
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000246647900258" target="_blank">WOS:000246647900258</a>
+</li><li> F Ertuğral, E Guliyev, AA Kuliev, 
+			     <i>"Low lying magnetic and electric dipole strength distribution in the even-even <sup>164-170</sup>Er"</i>, 
+				 <b> AIP Conference Proceedings </b>, 899, 109-110
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000246647900033" target="_blank">WOS:000246647900033</a>
+<a class="pub-link" href="https://doi.org/10.1063/1.2733060" target="_blank">DOI / Yayın</a>
+</li><li> Z Yıldırım, F Ertuğral, E Guliyev, AA Kuliev, 
+			     <i>"The Fermi and Gamov-Teller β-decay excitations of the scissors mode 1<sup>+</sup> states"</i>, 
+				 <b> AIP Conference Proceedings </b>, 899, 125-126
+                 <span class="article-button">Article</span>
+<span class="proceedingpaper-button">Proceeding Paper</span>
+<a class="wos-number" href="https://www.webofscience.com/wos/woscc/full-record/WOS:000246647900041" target="_blank">WOS:000246647900041</a>
+<a class="pub-link" href="https://doi.org/10.1063/1.2733068" target="_blank">DOI / Yayın</a>
+</li></ul></div>
+</div>
+<script>
+        function togglePanel(button) {
+            var panels = document.getElementsByClassName("panel");
+            var acc = document.getElementsByClassName("accordion");
+
+            // Diğer panelleri kapat
+            for (var i = 0; i < panels.length; i++) {
+                if (panels[i] !== button.nextElementSibling) {
+                    panels[i].style.maxHeight = null; // Diğer panelleri kapat
+                    acc[i].classList.remove("active");
+                }
+            }
+
+            // Tıklanan butonun panelini aç/kapa
+            button.classList.toggle("active");
+            var panel = button.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+    </script>
 </body>
 </html>
