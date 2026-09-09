@@ -855,5 +855,64 @@
             }
         }
     </script>
-</body>
+<script>
+(function () {
+  function getDocumentHeight() {
+    var body = document.body;
+    var html = document.documentElement;
+    return Math.max(
+      body ? body.scrollHeight : 0,
+      body ? body.offsetHeight : 0,
+      html ? html.clientHeight : 0,
+      html ? html.scrollHeight : 0,
+      html ? html.offsetHeight : 0
+    );
+  }
+
+  function sendHeight() {
+    if (window.parent === window) return;
+    window.parent.postMessage(
+      {
+        type: "publications-height",
+        height: getDocumentHeight()
+      },
+      "*"
+    );
+  }
+
+  var scheduled = false;
+  function scheduleHeight() {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(function () {
+      scheduled = false;
+      sendHeight();
+    });
+  }
+
+  window.addEventListener("DOMContentLoaded", scheduleHeight);
+  window.addEventListener("load", scheduleHeight);
+  window.addEventListener("resize", scheduleHeight);
+
+  // Accordion interactions may change height after max-height transitions.
+  document.addEventListener("click", function () {
+    scheduleHeight();
+    window.setTimeout(scheduleHeight, 80);
+    window.setTimeout(scheduleHeight, 250);
+    window.setTimeout(scheduleHeight, 500);
+  });
+
+  if ("ResizeObserver" in window && document.body) {
+    new ResizeObserver(scheduleHeight).observe(document.body);
+  } else if ("MutationObserver" in window && document.body) {
+    new MutationObserver(scheduleHeight).observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true
+    });
+  }
+
+  scheduleHeight();
+})();
+</script></body>
 </html>
