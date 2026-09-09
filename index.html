@@ -828,96 +828,79 @@
     </script>
 <script>
 (function () {
-  var target = document.querySelector(".yazi") || document.body;
-  var lastSent = 0;
-  var scheduled = false;
+  var lastSent = -1;
+  var timer = null;
 
-  function visibleContentHeight() {
+  function publicationHeight() {
+    var target = document.querySelector(".yazi");
     if (!target) return 0;
 
     var rect = target.getBoundingClientRect();
-    var style = window.getComputedStyle(target);
-    var marginBottom = parseFloat(style.marginBottom) || 0;
+    var top = rect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
 
-    // Absolute bottom of the visible publication container.
-    // Closed accordion panels contribute only their visible (collapsed) height.
-    return Math.ceil(
-      rect.bottom +
-      (window.pageYOffset || document.documentElement.scrollTop || 0) +
-      marginBottom +
-      4
-    );
+    // offsetHeight is the real laid-out visible box height. Content hidden by
+    // a collapsed max-height:0 panel does not contribute to this value.
+    return Math.ceil(top + target.offsetHeight + 2);
   }
 
-  function sendHeight() {
+  function sendHeight(force) {
     if (window.parent === window) return;
 
-    var h = visibleContentHeight();
+    var h = publicationHeight();
     if (!h || h < 300) return;
 
-    // Do not resend effectively identical sizes.
-    if (Math.abs(h - lastSent) < 2) return;
+    if (!force && Math.abs(h - lastSent) < 2) return;
     lastSent = h;
 
-    window.parent.postMessage(
-      {
-        type: "publications-height",
-        height: h
-      },
-      "*"
-    );
+    window.parent.postMessage({
+      type: "publications-height",
+      height: h
+    }, "*");
   }
 
-  function scheduleHeight() {
-    if (scheduled) return;
-    scheduled = true;
+  function sendAfterLayout() {
     window.requestAnimationFrame(function () {
-      scheduled = false;
-      sendHeight();
+      sendHeight(true);
     });
   }
 
-  window.addEventListener("DOMContentLoaded", function () {
-    target = document.querySelector(".yazi") || document.body;
-    scheduleHeight();
+  document.addEventListener("DOMContentLoaded", sendAfterLayout);
+  window.addEventListener("load", function () {
+    sendAfterLayout();
+    window.setTimeout(function () { sendHeight(true); }, 250);
   });
 
-  window.addEventListener("load", scheduleHeight);
-
-  // Needed for responsive line wrapping if the browser width changes.
-  window.addEventListener("resize", scheduleHeight);
-
-  // Accordion transitions can take a little time to reach their final size.
-  document.addEventListener("click", function () {
-    scheduleHeight();
-    window.setTimeout(scheduleHeight, 80);
-    window.setTimeout(scheduleHeight, 250);
-    window.setTimeout(scheduleHeight, 500);
+  // A browser-width change can alter line wrapping and therefore page height.
+  // Debounce it so changing only the iframe height does not cause ping-pong.
+  window.addEventListener("resize", function () {
+    clearTimeout(timer);
+    timer = window.setTimeout(function () {
+      sendHeight(false);
+    }, 120);
   });
 
-  // Observe the publication container itself. Do NOT observe body/html because
-  // changing iframe height would then retrigger the observer.
-  if ("ResizeObserver" in window) {
-    window.addEventListener("DOMContentLoaded", function () {
-      target = document.querySelector(".yazi") || document.body;
-      if (target) {
-        new ResizeObserver(scheduleHeight).observe(target);
-      }
-    });
-  } else if ("MutationObserver" in window) {
-    window.addEventListener("DOMContentLoaded", function () {
-      target = document.querySelector(".yazi") || document.body;
-      if (target) {
-        new MutationObserver(scheduleHeight).observe(target, {
-          childList: true,
-          subtree: true,
-          attributes: true
-        });
-      }
-    });
-  }
+  // Send once immediately after the accordion JS has toggled max-height.
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest ? event.target.closest(".accordion") : null;
+    if (!button) return;
 
-  scheduleHeight();
+    window.setTimeout(function () { sendHeight(true); }, 0);
+    window.setTimeout(function () { sendHeight(true); }, 230);
+    window.setTimeout(function () { sendHeight(true); }, 450);
+  });
+
+  // Most reliable signal: send the exact final height after the CSS collapse/
+  // expand transition has completed.
+  document.addEventListener("transitionend", function (event) {
+    if (!event.target.classList ||
+        !event.target.classList.contains("panel") ||
+        event.propertyName !== "max-height") {
+      return;
+    }
+    sendHeight(true);
+  });
+
+  sendAfterLayout();
 })();
 </script></body>
 </html>
