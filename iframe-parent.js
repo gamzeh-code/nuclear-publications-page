@@ -1,26 +1,18 @@
 (function () {
-  var lastAppliedHeight = 0;
-
-  function getFrame() {
-    return document.getElementById("publications-frame");
-  }
+  var lastHeight = -1;
 
   window.addEventListener("message", function (event) {
     if (event.origin !== "https://gamzeh-code.github.io") return;
     if (!event.data || event.data.type !== "publications-height") return;
 
-    var frame = getFrame();
+    var frame = document.getElementById("publications-frame");
     if (!frame) return;
 
-    var h = Number(event.data.height);
+    var h = Math.ceil(Number(event.data.height));
     if (!Number.isFinite(h) || h < 300) return;
+    if (Math.abs(h - lastHeight) < 2) return;
 
-    h = Math.ceil(h);
-
-    // Aynı yüksekliği tekrar tekrar uygulama
-    if (Math.abs(h - lastAppliedHeight) < 2) return;
-
-    lastAppliedHeight = h;
-    frame.style.height = h + "px";
+    lastHeight = h;
+    frame.style.setProperty("height", h + "px", "important");
   });
 })();
