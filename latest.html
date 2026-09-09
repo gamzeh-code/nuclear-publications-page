@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Son Çalışmalarımız</title>
+<style>
+:root {
+  --navy:#0a2239;
+  --blue:#1677a8;
+  --cyan:#43b8d8;
+  --muted:#637381;
+  --line:#dde5eb;
+}
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; background:transparent; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--navy);
+}
+.latest-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+  padding:1px;
+}
+.latest-card {
+  min-width:0;
+  min-height:245px;
+  display:flex;
+  flex-direction:column;
+  padding:20px 19px 18px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 1px 0 rgba(10,34,57,.02);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.latest-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 13px 30px rgba(24,50,70,.10);
+}
+.latest-meta {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:5px;
+  color:var(--blue);
+  font-size:9.5px;
+  line-height:1.4;
+  font-weight:800;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+.latest-year { color:var(--navy); }
+.latest-dot { color:#a6b4bf; }
+.latest-card h3 {
+  margin:11px 0 10px;
+  color:var(--navy);
+  font-size:13.5px;
+  line-height:1.52;
+  font-weight:650;
+}
+.latest-authors {
+  margin:0 0 15px;
+  color:var(--muted);
+  font-size:10.5px;
+  line-height:1.55;
+}
+.latest-footer {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:auto;
+  padding-top:13px;
+  border-top:1px solid #edf1f4;
+}
+.latest-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  min-width:0;
+}
+.latest-badge,.latest-early {
+  display:inline-block;
+  padding:2px 7px;
+  border-radius:12px;
+  background:#eaf7fa;
+  color:#1677a8;
+  font-size:8.5px;
+  line-height:1.4;
+  font-weight:700;
+}
+.latest-badge--conference {
+  background:#f1eef8;
+  color:#65537d;
+}
+.latest-early {
+  background:#f5f7f9;
+  color:#6c7d89;
+}
+.latest-link {
+  flex:0 0 auto;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:800;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.latest-link:hover { text-decoration:underline; }
+.latest-empty { margin:0; color:var(--muted); font-size:13px; }
+
+@media (max-width:980px) {
+  .latest-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:680px) {
+  .latest-grid { grid-template-columns:1fr; }
+  .latest-card { min-height:0; }
+}
+</style>
+</head>
+<body>
+<div class="latest-grid">
+
+        <article class="latest-card">
+          <div class="latest-meta"><span class="latest-year">2027</span><span class="latest-dot">·</span><span>Radiation Physics and Chemistry</span></div>
+          <h3>Gamma-ray shielding properties of the P<sub>2</sub>O<sub>5</sub>–ZnO–SrO glass system: A Geant4 Monte Carlo simulation study</h3>
+          <p class="latest-authors">TA Çelebi, G Hoşgör, E Tabar</p>
+          <div class="latest-footer">
+            <div class="latest-tags"><span class="latest-early">Early Access: 2026</span></div>
+            <a class="latest-link" href="https://doi.org/10.1016/j.radphyschem.2026.114309" target="_blank" rel="noopener">İncele →</a>
+          </div>
+        </article>
+        
+
+        <article class="latest-card">
+          <div class="latest-meta"><span class="latest-year">2026</span><span class="latest-dot">·</span><span>Journal of Inorganic and Organometallic Polymers and Materials</span></div>
+          <h3>Electrospun Polyvinyl Alcohol-Chitosan/Nb<sub>2</sub>CT<sub>x</sub>-TiO<sub>2</sub> Fiber Nanocomposites with Enhanced Dielectric, Photocatalytic, and Antimicrobial Performance</h3>
+          <p class="latest-authors">İ Erol, İ İsmail, MR Ekici, S Çetinkaya, Ö Hazman, E Tabar</p>
+          <div class="latest-footer">
+            <div class="latest-tags"><span class="latest-early">Early Access</span></div>
+            <a class="latest-link" href="https://doi.org/10.1007/s10904-026-04494-4" target="_blank" rel="noopener">İncele →</a>
+          </div>
+        </article>
+        
+
+        <article class="latest-card">
+          <div class="latest-meta"><span class="latest-year">2026</span><span class="latest-dot">·</span><span>Radiation Physics and Chemistry</span></div>
+          <h3>Hot and cold forging of iron–manganese alloys via powder metallurgy: Corrosion resistance and gamma shielding properties</h3>
+          <p class="latest-authors">MR Ekici, E Tabar, M Durmaz, R Yılmaz, G Hoşgör, T Demirgen, Z Barlas</p>
+          <div class="latest-footer">
+            <div class="latest-tags"></div>
+            <a class="latest-link" href="https://doi.org/10.1016/j.radphyschem.2026.114134" target="_blank" rel="noopener">İncele →</a>
+          </div>
+        </article>
+        
+
+        <article class="latest-card">
+          <div class="latest-meta"><span class="latest-year">2026</span><span class="latest-dot">·</span><span>Applied Geochemistry</span></div>
+          <h3>Multi-parameter soil gas geochemistry and fracture-controlled degassing along the İzmir Fault (Western Türkiye)</h3>
+          <p class="latest-authors">M İçhedef, C Taşköprü, İ Sapmaz, F Özen, G Duman, E Tabar, H Sözbilir, S Giammanco</p>
+          <div class="latest-footer">
+            <div class="latest-tags"></div>
+            <a class="latest-link" href="https://doi.org/10.1016/j.apgeochem.2026.106912" target="_blank" rel="noopener">İncele →</a>
+          </div>
+        </article>
+        
+</div>
+
+<script>
+(function () {
+  var lastSent = -1;
+  var timer = null;
+
+  function contentHeight() {
+    var grid = document.querySelector(".latest-grid");
+    if (!grid) return 0;
+    return Math.ceil(grid.getBoundingClientRect().bottom + 2);
+  }
+
+  function sendHeight(force) {
+    if (window.parent === window) return;
+    var h = contentHeight();
+    if (!h || h < 100) return;
+    if (!force && Math.abs(h - lastSent) < 2) return;
+    lastSent = h;
+    window.parent.postMessage({
+      type:"latest-publications-height",
+      height:h
+    }, "*");
+  }
+
+  function schedule(force) {
+    window.requestAnimationFrame(function () { sendHeight(force); });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () { schedule(true); });
+  window.addEventListener("load", function () {
+    schedule(true);
+    window.setTimeout(function () { sendHeight(true); }, 200);
+  });
+
+  window.addEventListener("resize", function () {
+    clearTimeout(timer);
+    timer = window.setTimeout(function () { sendHeight(false); }, 120);
+  });
+
+  if ("ResizeObserver" in window) {
+    document.addEventListener("DOMContentLoaded", function () {
+      var grid = document.querySelector(".latest-grid");
+      if (grid) new ResizeObserver(function () { sendHeight(false); }).observe(grid);
+    });
+  }
+})();
+</script>
+</body>
+</html>
