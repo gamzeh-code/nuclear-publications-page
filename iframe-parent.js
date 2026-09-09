@@ -1,4 +1,6 @@
 (function () {
+  var lastAppliedHeight = 0;
+
   function getFrame() {
     return document.getElementById("publications-frame");
   }
@@ -13,6 +15,12 @@
     var h = Number(event.data.height);
     if (!Number.isFinite(h) || h < 300) return;
 
-    frame.style.height = Math.ceil(h + 8) + "px";
+    h = Math.ceil(h);
+
+    // Aynı yüksekliği tekrar tekrar uygulama
+    if (Math.abs(h - lastAppliedHeight) < 2) return;
+
+    lastAppliedHeight = h;
+    frame.style.height = h + "px";
   });
 })();
