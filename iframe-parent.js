@@ -1,18 +1,25 @@
 (function () {
-  var lastHeight = -1;
+  var lastHeights = {};
+
+  var targets = {
+    "publications-height": "publications-frame",
+    "latest-publications-height": "latest-publications-frame"
+  };
 
   window.addEventListener("message", function (event) {
     if (event.origin !== "https://gamzeh-code.github.io") return;
-    if (!event.data || event.data.type !== "publications-height") return;
+    if (!event.data || !targets[event.data.type]) return;
 
-    var frame = document.getElementById("publications-frame");
+    var frameId = targets[event.data.type];
+    var frame = document.getElementById(frameId);
     if (!frame) return;
 
     var h = Math.ceil(Number(event.data.height));
-    if (!Number.isFinite(h) || h < 300) return;
-    if (Math.abs(h - lastHeight) < 2) return;
+    if (!Number.isFinite(h) || h < 100) return;
 
-    lastHeight = h;
+    if (Math.abs(h - (lastHeights[frameId] || -1)) < 2) return;
+
+    lastHeights[frameId] = h;
     frame.style.setProperty("height", h + "px", "important");
   });
 })();
