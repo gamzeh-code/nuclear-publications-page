@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "42-fizik-kongresi-bildiri-sunumlari",
+    "date": "2026-09-05",
+    "category": "Etkinlik",
+    "kicker": "Kongre",
+    "title": "Grup üyelerimiz Türk Fizik Derneği'nin 42. Fizik Kongresi'ne katıldı",
+    "summary": "Grubumuz araştırmacılarından Arş. Gör. Tuana Gel ve Arş. Gör. Tuğçe Ayşegül Çelebi ile yüksek lisans öğrencimiz Zehra Oktar, Türk Fizik Derneği tarafından 42. kez düzenlenen Fizik Kongresi'nde sözlü sunumlarını gerçekleştirdi.",
+    "content": "Grubumuz araştırmacılarından Arş. Gör. Tuana Gel ve Arş. Gör. Tuğçe Ayşegül Çelebi ile yüksek lisans öğrencimiz Zehra Oktar, Türk Fizik Derneği tarafından 42. kez düzenlenen Fizik Kongresi'nde sözlü sunumlarını gerçekleştirdi.",
+    "image_url": "https://tfd42.org/Logo/35134344223.jpg",
+    "image_alt": "Türk Fizik Derneği 42. Fizik Kongresi logosu",
+    "image_note": "Türk Fizik Derneği",
+    "featured": true,
+    "published": true
+  },
+  {
+    "slug": "dort-yuksek-lisans-ogrencimiz-mezun-oldu",
+    "date": "2026-06-20",
+    "category": "Grubumuzdan",
+    "kicker": "Mezuniyet",
+    "title": "Dört yüksek lisans öğrencimiz mezun oldu",
+    "summary": "Grubumuzun yüksek lisans öğrencileri Ayşenur Özçetin, Elen Babayeva, Kader Akkaya ve Zülal Gökmen yüksek lisans eğitimlerini başarıyla tamamlayarak mezun oldular.",
+    "content": "Grubumuzun yüksek lisans öğrencileri Ayşenur Özçetin, Elen Babayeva, Kader Akkaya ve Zülal Gökmen yüksek lisans eğitimlerini başarıyla tamamlayarak mezun oldular. Öğrencilerimizi kutluyor, akademik ve mesleki yaşamlarında başarılar diliyoruz.",
+    "image_url": "",
+    "image_alt": "",
+    "image_note": "Yeni mezunlarımızı kutluyoruz.",
+    "featured": false,
+    "published": true
+  },
+  {
+    "slug": "hakan-yakut-2209a-projesi-desteklendi",
+    "date": "2026-05-20",
+    "category": "Proje",
+    "kicker": "TÜBİTAK 2209-A",
+    "title": "Prof. Dr. Hakan Yakut’un TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı",
+    "summary": "Prof. Dr. Hakan Yakut danışmanlığında hazırlanan TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı.",
+    "content": "Prof. Dr. Hakan Yakut danışmanlığında hazırlanan TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı.",
+    "image_url": "",
+    "image_alt": "",
+    "image_note": "",
+    "featured": false,
+    "published": true
+  },
+  {
+    "slug": "tugce-aysegul-celebi-2209a-projesi-desteklendi",
+    "date": "2026-05-12",
+    "category": "Proje",
+    "kicker": "TÜBİTAK 2209-A",
+    "title": "Arş. Gör. Tuğçe Ayşegül Çelebi’nin TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı",
+    "summary": "Arş. Gör. Tuğçe Ayşegül Çelebi’nin TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı.",
+    "content": "Arş. Gör. Tuğçe Ayşegül Çelebi’nin TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı.",
+    "image_url": "",
+    "image_alt": "",
+    "image_note": "",
+    "featured": false,
+    "published": true
+  },
+  {
+    "slug": "elif-kemah-gamze-hosgor-doktora-tez-odulu",
+    "date": "2025-08-15",
+    "category": "Akademik Başarı",
+    "kicker": "Tez Ödülü",
+    "title": "Dr. Elif Kemah ve Dr. Gamze Hoşgör’ün doktora tezleri tez ödülüne layık görüldü",
+    "summary": "Dr. Elif Kemah ve Dr. Gamze Hoşgör’ün doktora tezleri tez ödülüne layık görüldü.",
+    "content": "Dr. Elif Kemah ve Dr. Gamze Hoşgör’ün doktora tezleri tez ödülüne layık görüldü. Araştırmacılarımızı kutluyor, başarılarının devamını diliyoruz.",
+    "image_url": "",
+    "image_alt": "",
+    "image_note": "",
+    "featured": false,
+    "published": true
+  }
+]

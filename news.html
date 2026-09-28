@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Haberlerimiz</title><style>
+:root{--navy:#0a2239;--blue:#0673ad;--muted:#6f7d88;--line:#dbe4ea;--pale:#eef8fb}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--navy)}
+a{color:inherit}.tag{display:inline-block;color:var(--blue);font-size:9px;font-weight:800;letter-spacing:.075em;text-transform:uppercase}
+.date{color:var(--blue);font-size:11px;font-weight:800}.category{margin-left:8px;color:#87949d;font-size:9px;font-weight:800;letter-spacing:.065em;text-transform:uppercase}
+.empty{padding:28px;border:1px solid var(--line);border-radius:16px;color:var(--muted);background:#fff}
+
+main{padding:1px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{display:flex;min-height:245px;flex-direction:column;padding:24px;border:1px solid var(--line);border-top:3px solid #43bfd7;border-radius:16px;background:#fff;transition:transform .2s ease,box-shadow .2s ease}.card:hover{transform:translateY(-4px);box-shadow:0 13px 30px rgba(24,50,70,.10)}.card-top{display:flex;justify-content:space-between;gap:12px}.card h2{margin:18px 0 12px;font:500 20px/1.38 Georgia,serif}.card p{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.68}.card>a{margin-top:auto;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.card>a:hover{text-decoration:underline}@media(max-width:920px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid{grid-template-columns:1fr}.card{min-height:0}}
+</style></head>
+<body data-height-message="news-height"><main><div class="grid">
+<article class="card"><div class="card-top"><span class="tag">Etkinlik</span><span class="date">Eylül 2026</span></div>
+<h2>Grup üyelerimiz Türk Fizik Derneği&#x27;nin 42. Fizik Kongresi&#x27;ne katıldı</h2><p>Grubumuz araştırmacılarından Arş. Gör. Tuana Gel ve Arş. Gör. Tuğçe Ayşegül Çelebi ile yüksek lisans öğrencimiz Zehra Oktar, Türk Fizik Derneği tarafından 42. kez düzenlenen Fizik Kongresi&#x27;nde sözlü sunumlarını gerçekleştirdi.</p><a href="news/42-fizik-kongresi-bildiri-sunumlari.html" target="_blank" rel="noopener">Haberi incele →</a></article>
+<article class="card"><div class="card-top"><span class="tag">Grubumuzdan</span><span class="date">Haziran 2026</span></div>
+<h2>Dört yüksek lisans öğrencimiz mezun oldu</h2><p>Grubumuzun yüksek lisans öğrencileri Ayşenur Özçetin, Elen Babayeva, Kader Akkaya ve Zülal Gökmen yüksek lisans eğitimlerini başarıyla tamamlayarak mezun oldular.</p><a href="news/dort-yuksek-lisans-ogrencimiz-mezun-oldu.html" target="_blank" rel="noopener">Haberi incele →</a></article>
+<article class="card"><div class="card-top"><span class="tag">Proje</span><span class="date">Mayıs 2026</span></div>
+<h2>Prof. Dr. Hakan Yakut’un TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı</h2><p>Prof. Dr. Hakan Yakut danışmanlığında hazırlanan TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı.</p><a href="news/hakan-yakut-2209a-projesi-desteklendi.html" target="_blank" rel="noopener">Haberi incele →</a></article>
+<article class="card"><div class="card-top"><span class="tag">Proje</span><span class="date">Mayıs 2026</span></div>
+<h2>Arş. Gör. Tuğçe Ayşegül Çelebi’nin TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı</h2><p>Arş. Gör. Tuğçe Ayşegül Çelebi’nin TÜBİTAK 2209-A öğrenci projesi desteklenmeye hak kazandı.</p><a href="news/tugce-aysegul-celebi-2209a-projesi-desteklendi.html" target="_blank" rel="noopener">Haberi incele →</a></article>
+<article class="card"><div class="card-top"><span class="tag">Akademik Başarı</span><span class="date">Ağustos 2025</span></div>
+<h2>Dr. Elif Kemah ve Dr. Gamze Hoşgör’ün doktora tezleri tez ödülüne layık görüldü</h2><p>Dr. Elif Kemah ve Dr. Gamze Hoşgör’ün doktora tezleri tez ödülüne layık görüldü.</p><a href="news/elif-kemah-gamze-hosgor-doktora-tez-odulu.html" target="_blank" rel="noopener">Haberi incele →</a></article></div></main>
+<script>
+(function(){
+  var last=-1,timer=null,type=document.body.dataset.heightMessage;
+  function height(){return Math.ceil(document.documentElement.scrollHeight+2)}
+  function send(force){if(window.parent===window||!type)return;var h=height();if(h<100)return;if(!force&&Math.abs(h-last)<2)return;last=h;window.parent.postMessage({type:type,height:h},"*")}
+  function schedule(force){window.requestAnimationFrame(function(){send(force)})}
+  document.addEventListener("DOMContentLoaded",function(){schedule(true)});
+  window.addEventListener("load",function(){schedule(true);window.setTimeout(function(){send(true)},250)});
+  window.addEventListener("resize",function(){clearTimeout(timer);timer=window.setTimeout(function(){send(false)},120)});
+  if("ResizeObserver" in window){new ResizeObserver(function(){send(false)}).observe(document.documentElement)}
+})();
+</script>
+</body></html>

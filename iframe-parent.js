@@ -3,7 +3,9 @@
 
   var targets = {
     "publications-height": "publications-frame",
-    "latest-publications-height": "latest-publications-frame"
+    "latest-publications-height": "latest-publications-frame",
+    "latest-news-height": "latest-news-frame",
+    "news-height": "news-frame"
   };
 
   window.addEventListener("message", function (event) {
