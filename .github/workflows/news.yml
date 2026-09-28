@@ -1,6 +1,10 @@
 name: Haberleri Güncelle
 
 on:
+  push:
+    paths:
+      - news.json
+      - .github/workflows/news.yml
   issues:
     types: [opened, reopened]
   workflow_dispatch:
@@ -16,7 +20,7 @@ concurrency:
 jobs:
   publish:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'workflow_dispatch' || github.event_name == 'push' ||
       (startsWith(github.event.issue.title, '[Yeni Haber]') &&
       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association))
     runs-on: ubuntu-latest
