@@ -8,7 +8,7 @@ a{color:inherit}.tag{display:inline-block;color:var(--blue);font-size:9px;font-w
 .date{color:var(--blue);font-size:11px;font-weight:800}.category{margin-left:8px;color:#87949d;font-size:9px;font-weight:800;letter-spacing:.065em;text-transform:uppercase}
 .empty{padding:28px;border:1px solid var(--line);border-radius:16px;color:var(--muted);background:#fff}
 
-main{padding:1px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}.card{display:flex;min-height:245px;flex-direction:column;padding:24px;border:1px solid var(--line);border-top:3px solid #43bfd7;border-radius:16px;background:#fff;transition:transform .2s ease,box-shadow .2s ease}.card:hover{transform:translateY(-4px);box-shadow:0 13px 30px rgba(24,50,70,.10)}.card.expanded{grid-column:1/-1;min-height:0;transform:none;box-shadow:0 13px 30px rgba(24,50,70,.10)}.card-top{display:flex;justify-content:space-between;gap:12px}.card h2{margin:18px 0 12px;font:500 20px/1.38 Georgia,serif}.card p{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.68}.inline-detail{margin-top:auto}.inline-detail summary{width:max-content;max-width:100%;cursor:pointer;list-style:none;color:var(--blue);font-size:12px;font-weight:800}.inline-detail summary::-webkit-details-marker{display:none}.inline-detail summary:hover{text-decoration:underline}.open-label{display:none}.inline-detail[open] .closed-label{display:none}.inline-detail[open] .open-label{display:inline}.inline-body{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:26px;margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}.inline-image{width:100%;max-height:300px;border-radius:12px;object-fit:contain;background:#f5f8fa}.full-text{color:#455e6d;font-size:14px;line-height:1.8}.full-text p{margin:0 0 14px;color:inherit;font-size:inherit;line-height:inherit}.external-link{display:inline-block;margin-top:6px;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.external-link:hover{text-decoration:underline}@media(max-width:920px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid{grid-template-columns:1fr}.card{min-height:0}.inline-body{grid-template-columns:1fr}.card.expanded{grid-column:1}}
+main{padding:1px}.grid{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}.card{position:relative;display:flex;min-height:245px;flex-direction:column;padding:24px;border:1px solid var(--line);border-top:3px solid #43bfd7;border-radius:16px;background:#fff;transition:opacity .22s ease,filter .22s ease,transform .2s ease,box-shadow .2s ease}.card:hover{transform:translateY(-4px);box-shadow:0 13px 30px rgba(24,50,70,.10)}.grid.has-open .card:not(.expanded){opacity:.28;filter:saturate(.45)}.card.expanded{z-index:20;transform:none;box-shadow:0 13px 30px rgba(24,50,70,.14)}.card-top{display:flex;justify-content:space-between;gap:12px}.card h2{margin:18px 0 12px;font:500 20px/1.38 Georgia,serif}.card p{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.68}.inline-detail{margin-top:auto}.inline-detail summary{position:relative;z-index:22;width:max-content;max-width:100%;cursor:pointer;list-style:none;color:var(--blue);font-size:12px;font-weight:800}.inline-detail summary::-webkit-details-marker{display:none}.inline-detail summary:hover{text-decoration:underline}.open-label{display:none}.inline-detail[open] .closed-label{display:none}.inline-detail[open] .open-label{display:inline}.inline-body{position:absolute;z-index:21;top:calc(100% + 10px);left:var(--panel-left,0);display:grid;width:var(--panel-width,100%);grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:26px;padding:26px;border:1px solid var(--line);border-top:3px solid #43bfd7;border-radius:16px;background:#fff;box-shadow:0 18px 42px rgba(10,34,57,.18)}.inline-image{width:100%;max-height:300px;border-radius:12px;object-fit:contain;background:#f5f8fa}.full-text{color:#455e6d;font-size:14px;line-height:1.8}.full-text p{margin:0 0 14px;color:inherit;font-size:inherit;line-height:inherit}.external-link{display:inline-block;margin-top:6px;color:var(--blue);font-size:12px;font-weight:800;text-decoration:none}.external-link:hover{text-decoration:underline}@media(max-width:920px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid{grid-template-columns:1fr}.card{min-height:0}.inline-body{grid-template-columns:1fr}}
 </style></head>
 <body data-height-message="news-height"><main><div class="grid">
 <article class="card"><div class="card-top"><span class="tag">Etkinlik</span><span class="date">Eylül 2026</span></div>
@@ -39,17 +39,34 @@ main{padding:1px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)
 <script>
 (function(){
   var details=Array.prototype.slice.call(document.querySelectorAll(".inline-detail"));
+  var grid=document.querySelector(".grid");
+  function placePanel(card){
+    if(!grid||!card)return;
+    var gridBox=grid.getBoundingClientRect(),cardBox=card.getBoundingClientRect();
+    card.style.setProperty("--panel-left",(gridBox.left-cardBox.left)+"px");
+    card.style.setProperty("--panel-width",gridBox.width+"px");
+  }
+  function refreshHeight(){
+    window.setTimeout(function(){window.dispatchEvent(new Event("resize"))},80);
+  }
   details.forEach(function(item){
     item.addEventListener("toggle",function(){
       var card=item.closest(".card");
       if(item.open){
         details.forEach(function(other){if(other!==item)other.removeAttribute("open")});
+        placePanel(card);
         if(card)card.classList.add("expanded");
-        window.setTimeout(function(){item.scrollIntoView({behavior:"smooth",block:"nearest"})},80);
+        if(grid)grid.classList.add("has-open");
       }else if(card){
         card.classList.remove("expanded");
+        if(grid&&!grid.querySelector(".inline-detail[open]"))grid.classList.remove("has-open");
       }
+      refreshHeight();
     });
+  });
+  window.addEventListener("resize",function(){
+    var openCard=document.querySelector(".card.expanded");
+    if(openCard)placePanel(openCard);
   });
 })();
 </script>
